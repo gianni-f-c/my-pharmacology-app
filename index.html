@@ -707,7 +707,7 @@ let currentIndex = 0;
 let score = 0;
 let errors = [];
 let timerInterval;
-let timeLeft = 30 * 60; // 30 minuti in secondi
+let timeLeft = 60 * 60; // 30 minuti in secondi
 
 function startAttempt() {
     // Mescola e seleziona domande (ogni domanda presente una sola volta)
@@ -715,7 +715,7 @@ function startAttempt() {
     currentIndex = 0;
     score = 0;
     errors = [];
-    timeLeft = 30 * 60;
+    timeLeft = 60 * 60;
 
     document.getElementById('start-screen').classList.remove('active');
     document.getElementById('quiz-screen').classList.add('active');
@@ -816,6 +816,7 @@ function endAttempt(reason) {
 </script>
 </body>
 </html>
+
 
 
 
