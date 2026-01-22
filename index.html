@@ -61,408 +61,1415 @@
 // I tuoi dati (Esempio, aggiungi qui tutti i batch)
 const allQuestions = [
    // COPIA E INCOLLA QUESTO BLOCCO DENTRO ALLA PARENTESI QUADRA DI: const allQuestions = [ ... ]
-{q: "Sperimentazione di fase I", a: "Si effettua su un numero limitato di volontari sani (20-80) per valutare la sicurezza e la tollerabilità del farmaco."},
-{q: "Bersaglio molecolare dei farmaci", a: "Recettori, enzimi, canali ionici, trasportatori."},
-{q: "Legame farmaco-proteico", a: "Influenza la distribuzione e l'emivita del farmaco; solo la quota libera è attiva."},
-{q: "Volume di distribuzione (Vd)", a: "Rapporto tra la quantità totale di farmaco nell'organismo e la sua concentrazione plasmatica."},
-{q: "Biodisponibilità", a: "Frazione della dose somministrata che raggiunge la circolazione sistemica in forma immodificata."},
-{q: "Clearance", a: "Volume di plasma depurato dal farmaco nell'unità di tempo."},
-{q: "Emivita (t1/2)", a: "Tempo necessario affinché la concentrazione plasmatica del farmaco si riduca della metà."},
-{q: "Reazioni di fase I (metabolismo)", a: "Ossidazione, riduzione, idrolisi; servono a rendere il farmaco più polare."},
-{q: "Citocromo P450", a: "Principale sistema enzimatico microsomiale epatico coinvolto nel metabolismo dei farmaci."},
-{q: "Induzione enzimatica", a: "Aumento dell'attività degli enzimi metabolizzanti, che riduce l'effetto dei farmaci co-somministrati."},
-{q: "Inibizione enzimatica", a: "Riduzione dell'attività degli enzimi metabolizzanti, che aumenta il rischio di tossicità."},
-{q: "Escrezione renale", a: "Comprende filtrazione glomerulare, secrezione tubulare attiva e riassorbimento tubulare passivo."},
-{q: "Agonista pieno", a: "Farmaco che si lega al recettore e produce la risposta massima possibile."},
-{q: "Agonista parziale", a: "Farmaco che si lega al recettore ma produce una risposta submassimale anche a saturazione."},
-{q: "Antagonista competitivo", a: "Si lega allo stesso sito dell'agonista; sposta la curva dose-risposta a destra senza ridurre l'effetto massimo."},
-{q: "Antagonista non competitivo", a: "Si lega a un sito diverso o in modo irreversibile; riduce l'effetto massimo dell'agonista."},
-{q: "Indice terapeutico", a: "Rapporto tra la dose tossica e la dose efficace (TD50/ED50)."},
-{q: "Sinergismo", a: "Interazione tra due farmaci che produce un effetto superiore alla somma dei singoli effetti."},
-{q: "Tachiflassi", a: "Rapida comparsa di tolleranza dopo somministrazioni ripetute a brevi intervalli."},
-{q: "Recettori ionotropici", a: "Canali ionici regolati da ligandi (risposta in millisecondi)."},
-{q: "Recettori metabotropici", a: "Recettori accoppiati a proteine G (risposta in secondi)."},
-{q: "Secondi messaggeri", a: "Molecole come cAMP, IP3, DAG che trasmettono il segnale all'interno della cellula."},
-{q: "Farmaci colinergici (esteri della colina)", a: "Acetilcolina, metacolina, carbacolo, betanecolo."},
-{q: "Anticolinesterasici reversibili", a: "Fisostigmina, neostigmina, edrofonio."},
-{q: "Organofosforici", a: "Inibitori irreversibili dell'acetilcolinesterasi (gas nervini, insetticidi)."},
-{q: "Atropina", a: "Antagonista competitivo dei recettori muscarinici."},
-{q: "Effetti atropina", a: "Midriasi, tachicardia, stipsi, ritenzione urinaria, secchezza fauci."},
-{q: "Adrenalina (Epinefrina)", a: "Agonista alfa e beta adrenergico; usata nello shock anafilattico."},
-{q: "Beta-bloccanti non selettivi", a: "Propranolo, timololo, nadololo."},
-{q: "Beta-1 bloccanti selettivi", a: "Atenololo, metoprololo, bisoprololo."},
-{q: "Alfa-1 bloccanti", a: "Prazosina, terazosina, doxazosina (usati in ipertensione e IPB)."},
-{q: "Benzodiazepine meccanismo", a: "Modulatori allosterici positivi del recettore GABA-A; aumentano la frequenza di apertura del canale al cloro."},
-{q: "Antidoto benzodiazepine", a: "Flumazenil."},
-{q: "Barbiturici meccanismo", a: "Aumentano la durata di apertura del canale al cloro del recettore GABA-A."},
-{q: "Farmaci per il Parkinson", a: "Levodopa, carbidopa, bromocriptina, selegilina, entacapone."},
-{q: "Levodopa + Carbidopa", a: "La carbidopa inibisce la decarbossilasi periferica aumentando la quota di Levodopa che arriva al SNC."},
-{q: "Antipsicotici tipici (meccanismo)", a: "Antagonisti dei recettori D2 della dopamina."},
-{q: "Effetti extrapiramidali", a: "Effetti avversi motori degli antipsicotici (distonia, parkinsonismo, acatisia)."},
-{q: "Antidepressivi SSRI", a: "Fluoxetina, sertralina, paroxetina, citalopram."},
-{q: "Litio", a: "Farmaco d'elezione per il trattamento del disturbo bipolare."},
-{q: "Morfina meccanismo d'azione", a: "Agonista dei recettori oppioidi mu (μ), accoppiati a proteine Gi/o."},
-{q: "Effetti collaterali oppioidi", a: "Miosi, stipsi, depressione respiratoria, nausea, bradicardia."},
-{q: "Antidoto oppioidi", a: "Naloxone (antagonista competitivo)."},
-{q: "FANS meccanismo d'azione", a: "Inibizione dell'enzima cicloossigenasi (COX-1 e COX-2) e della sintesi di prostaglandine."},
-{q: "Aspirina (Acido Acetilsalicilico) caratteristica", a: "Inibitore irreversibile della COX tramite acetilazione del sito attivo."},
-{q: "Effetti avversi FANS", a: "Gastrotossicità (ulcere), nefrotossicità, inibizione aggregazione piastrinica."},
-{q: "Paracetamolo caratteristiche", a: "Analgesico e antipiretico; scarsa attività antinfiammatoria periferica; epatotossico a dosi elevate."},
-{q: "Antidoto Paracetamolo", a: "N-acetilcisteina (ripristina le scorte di glutatione)."},
-{q: "Glucocorticoidi meccanismo", a: "Legame a recettori intracellulari, traslocazione nel nucleo e modulazione della trascrizione genica (inibizione NF-kB)."},
-{q: "Effetti avversi corticosteroidi", a: "Osteoporosi, iperglicemia, ridistribuzione del grasso (faccies lunaris), immunodepressione."},
-{q: "Diuretici dell'ansa (es. Furosemide)", a: "Inibizione del simporto Na+/K+/2Cl- nel tratto ascendente spesso dell'ansa di Henle."},
-{q: "Diuretici tiazidici (es. Idroclorotiazide)", a: "Inibizione del simporto Na+/Cl- nel tubulo contorto distale."},
-{q: "Diuretici risparmiatori di potassio", a: "Antagonisti dell'aldosterone (Spironolattone) o bloccanti dei canali Na+ (Amiloride)."},
-{q: "ACE-inibitori (es. Enalapril, Ramipril)", a: "Inibiscono l'enzima di conversione dell'angiotensina I in angiotensina II."},
-{q: "Effetto collaterale ACE-inibitori", a: "Tosse secca (da accumulo di bradicinina) e angioedema."},
-{q: "Sartani (ARBs)", a: "Antagonisti del recettore AT1 dell'angiotensina II."},
-{q: "Calcio-antagonisti diidropiridinici (es. Nifedipina, Amlodipina)", a: "Blocco dei canali del calcio di tipo L; prevalente effetto vasodilatatore."},
-{q: "Calcio-antagonisti non-diidropiridinici (es. Verapamil, Diltiazem)", a: "Effetto cronotropo e inotropo negativo sul cuore."},
-{q: "Nitrovasodilatatori (es. Nitroglicerina)", a: "Rilascio di ossido nitrico (NO), aumento di cGMP e vasodilatazione (prevalente venosa)."},
-{q: "Statine meccanismo", a: "Inibitori competitivi dell'HMG-CoA reduttasi (bloccano la sintesi endogena di colesterolo)."},
-{q: "Effetti avversi Statine", a: "Miopatia, rabdomiolisi, aumento delle transaminasi."},
-{q: "Ezetimibe meccanismo", a: "Inibizione dell'assorbimento intestinale di colesterolo tramite blocco della proteina NPC1L1."},
-{q: "Digitale (Digossina) meccanismo", a: "Inibizione della pompa Na+/K+ ATPasi; aumento del sodio intracellulare e attivazione scambiatore Na+/Ca2+."},
-{q: "Segni di tossicità digitalica", a: "Nausea, vomito, disturbi visivi (visione gialla/alonata), aritmie."},
-{q: "Eparina meccanismo", a: "Attivazione dell'antitrombina III, che inibisce la trombina e il fattore Xa."},
-{q: "Warfarin (Coumadin) meccanismo", a: "Antagonista della vitamina K (inibisce la vitamina K epossido reduttasi)."},
-{q: "Monitoraggio Warfarin", a: "Si utilizza l'INR (International Normalized Ratio)."},
-{q: "Nuovi Anticoagulanti Orali (NAO/DOAC)", a: "Inibitori diretti della trombina (Dabigatran) o del fattore Xa (Rivaroxaban, Apixaban)."},
-{q: "Insulina rapida (es. Lispro, Aspart)", a: "Inizio d'azione immediato (15 min), durata breve; usata per il controllo prandiale."},
-{q: "Metformina meccanismo", a: "Biguanide; riduce la produzione epatica di glucosio e aumenta la sensibilità periferica all'insulina."},
-{q: "Sulfoniluree meccanismo", a: "Chiusura dei canali del K+ ATP-dipendenti nelle cellule beta pancreatiche; stimolano la secrezione di insulina."},
-{q: "Penicilline meccanismo", a: "Inibizione della transpeptidasi (blocco sintesi della parete batterica)."},
-{q: "Resistenza alle Penicilline", a: "Produzione di beta-lattamasi (penicillinasi)."},
-{q: "Cefalosporine di III generazione (es. Ceftriaxone)", a: "Ampio spettro, resistenti a molte beta-lattamasi, passano la barriera ematoencefalica."},
-{q: "Macrolidi (es. Eritromicina, Azitromicina)", a: "Inibizione della sintesi proteica legandosi alla subunità 50S del ribosoma."},
-{q: "Aminoglicosidi (es. Gentamicina)", a: "Legame alla subunità 30S; battericidi; rischio di nefro- e ototossicità."},
-{q: "Tetracicline meccanismo", a: "Inibizione sintesi proteica legandosi alla subunità 30S; controindicate in gravidanza e bambini."},
-{q: "Fluorochinoloni (es. Ciprofloxacina)", a: "Inibizione della DNA girasi (topoisomerasi II) e topoisomerasi IV."},
-{q: "Vancomicina", a: "Glicopeptide attivo contro Gram+ (compreso MRSA); inibisce la polimerizzazione del peptidoglicano."},
-{q: "Sindrome dell'uomo rosso (Red Man Syndrome)", a: "Reazione avversa da infusione rapida di Vancomicina per rilascio di istamina."},
-{q: "Metronidazolo", a: "Attivo contro batteri anaerobi e protozoi; causa reazione disulfiram-simile con alcol."},
-{q: "Cloramfenicolo tossicità", a: "Depressione midollare (anemia aplastica) e sindrome del bambino grigio."},
-{q: "Sulfamidici meccanismo", a: "Inibitori competitivi della diidropteroato sintetasi (analoghi del PABA)."},
-{q: "Trimetoprim meccanismo", a: "Inibitore della diidrofolato reduttasi batterica."},
-{q: "Cotrimossazolo", a: "Associazione di Sulfametossazolo e Trimetoprim; blocco sequenziale della sintesi dell'acido folico."},
-{q: "Antimicotici poliènici (es. Amfotericina B)", a: "Legame all'ergosterolo e formazione di pori nella membrana fungina."},
-{q: "Griseofulvina", a: "Antimicotico che interferisce con la funzione dei microtubuli; usato per le dermatofitosi."},
-{q: "Aciclovir meccanismo", a: "Analogo nucleosidico attivato dalla timidina chinasi virale; inibisce la DNA polimerasi di HSV e VZV."},
-{q: "Oseltamivir (Tamiflu)", a: "Inibitore della neuraminidasi; attivo contro i virus influenzali A e B."},
-{q: "Zidovudina (AZT)", a: "Inibitore nucleosidico della trascrittasi inversa (NRTI) usato nell'HIV."},
-{q: "Inibitori della proteasi HIV (es. Ritonavir)", a: "Impediscono la scissione delle poliproteine virali, bloccando la maturazione del virus."},
-{q: "Amantadina", a: "Inibitore della scapsidazione del virus influenzale A; usata anche nel Parkinson."},
-{q: "Metotressato (MTX)", a: "Antimetabolita; inibitore della diidrofolato reduttasi umana; usato in oncologia e malattie autoimmuni."},
-{q: "5-Fluorouracile (5-FU)", a: "Antimetabolita (analogo pirimidinico); inibisce la timidilato sintasi."},
-{q: "Ciclofosfamide", a: "Agente alchilante (mostarda azotata); causa cistite emorragica (trattata con MESNA)."},
-{q: "Cisplatino", a: "Composto del platino; forma legami crociati nel DNA; altamente emetogeno e nefrotossico."},
-{q: "Doxorubicina (Adriamicina)", a: "Antibiotico antraciclinico; inibisce la topoisomerasi II; rischio di cardiotossicità cronica."},
-{q: "Vincristina e Vinblastina", a: "Alcaloidi della vinca; inibiscono la polimerizzazione della tubulina (blocco mitotico)."},
-{q: "Taxani (es. Paclitaxel)", a: "Inibiscono la depolarizzazione (smontaggio) dei microtubuli stabilizzandoli."},
-{q: "Tamoxifene", a: "Modulatore selettivo del recettore degli estrogeni (SERM); usato nel carcinoma mammario ER+."},
-{q: "Imatinib (Glivec)", a: "Inibitore della tirosina chinasi Bcr-Abl; specifico per la Leucemia Mieloide Cronica."},
-{q: "Ciclosporina", a: "Immunosoppressore; inibisce la calcineurina e la produzione di IL-2."},
-{q: "Tacrolimus", a: "Inibitore della calcineurina (più potente della ciclosporina)."},
-{q: "Sirolimus (Rapamicina)", a: "Inibitore di mTOR; blocca la risposta delle cellule T all'IL-2."},
-{q: "Anticorpi monoclonali - Prefisso '-mab'", a: "Monoclonal Antibody."},
-{q: "Infliximab", a: "Anticorpo chimerico anti-TNF alfa; usato nel Crohn e Artrite Reumatode."},
-{q: "Omalizumab", a: "Anticorpo anti-IgE; usato nell'asma allergico grave."},
-{q: "Eritropoietina (EPO)", a: "Stimola la produzione di globuli rossi nel midollo osseo; usata nell'anemia da insufficienza renale."},
-{q: "Filgrastim (G-CSF)", a: "Stimola la produzione di neutrofili."},
-{q: "H1 antagonisti di I generazione (es. Difenidramina)", a: "Passano la BEE; causano sedazione ed effetti anticolinergici."},
-{q: "H1 antagonisti di II generazione (es. Cetirizina, Loratadina)", a: "Non passano la BEE; privi di effetto sedativo."},
-{q: "H2 antagonisti (es. Ranitidina)", a: "Inibiscono la secrezione acida gastrica stimolata dall'istamina."},
-{q: "Inibitori di pompa protonica (IPP, es. Omeprazolo)", a: "Inibizione irreversibile della H+/K+ ATPasi nelle cellule parietali gastriche."},
-{q: "Sucralfato", a: "Forma un complesso protettivo che aderisce alla superficie delle ulcere."},
-{q: "Lassativi osmotici (es. Lattulosio, Magnesio solfato)", a: "Trattengono acqua nel lume intestinale per gradiente osmotico."},
-{q: "Loperamide", a: "Agonista oppioide periferico (non passa BEE); usato come antidiarroico."},
-{q: "Ondansetron", a: "Antagonista dei recettori 5-HT3; potente antiemetico usato in chemioterapia."},
-{q: "Sumatriptan", a: "Agonista dei recettori 5-HT1D/1B; usato per l'attacco acuto di emicrania."},
-{q: "Alprostadil", a: "Analogo PGE1; usato per mantenere pervio il dotto di Botallo o nella disfunzione erettile."},
-{q: "Montelukast", a: "Antagonista dei recettori dei leucotrieni (CysLT1); usato nell'asma."},
-{q: "L-Dopa e inibitori delle MAO-B (es. Selegilina)", a: "Aumentano la disponibilità di dopamina nel vallo sinaptico riducendone la degradazione."},
-{q: "Bromocriptina e Pramipexolo", a: "Agonisti diretti dei recettori dopaminergici usati nel Parkinson."},
-{q: "Entacapone e Tolcapone", a: "Inibitori delle COMT; riducono il metabolismo periferico della Levodopa."},
-{q: "Fenitoina (Epanutin) meccanismo", a: "Blocco dei canali del sodio voltaggio-dipendenti nello stato inattivo."},
-{q: "Effetto avverso Fenitoina", a: "Iperplasia gengivale, irsutismo, anemia megaloblastica."},
-{q: "Acido Valproico meccanismo", a: "Meccanismo multiplo: blocco canali Na+, aumento GABA, blocco canali Ca2+ di tipo T."},
-{q: "Etosuccimide", a: "Farmaco d'elezione per le Crisi di Assenza (Piccolo Male); blocca i canali del calcio di tipo T."},
-{q: "Carbamazepina", a: "Blocco canali Na+; usata per epilessia e nevralgia del trigemino; potente induttore enzimatico."},
-{q: "Levetiracetam (Keppra)", a: "Si lega alla proteina delle vescicole sinaptiche SV2A modulando il rilascio di neurotrasmettitori."},
-{q: "Aloperidolo", a: "Neurolettico tipico (butirrofenone); forte antagonista D2; alto rischio di sintomi extrapiramidali."},
-{q: "Clozapina", a: "Antipsicotico atipico; bassa affinità D2, alta affinità 5-HT2A; rischio di agranulocitosi (richiede monitoraggio ematico)."},
-{q: "Risperidone e Olanzapina", a: "Antipsicotici atipici (SDA - Serotonin-Dopamine Antagonists)."},
-{q: "Antidepressivi Triciclici (TCA, es. Amitriptilina)", a: "Inibizione non selettiva del reuptake di Noradrenalina e Serotonina; effetti anticolinergici e cardiotossicità."},
-{q: "Venlafaxina e Duloxetina (SNRI)", a: "Inibitori del reuptake di Serotonina e Noradrenalina."},
-{q: "Litio Carbonato tossicità", a: "Tremori, ipotiroidismo, diabete insipido nefrogenico, indice terapeutico stretto."},
-{q: "Anestetici Locali (meccanismo)", a: "Blocco reversibile dei canali del sodio dall'interno della membrana cellulare (forma ionizzata)."},
-{q: "Lidocaina vs Bupivacaina", a: "Lidocaina: durata media; Bupivacaina: lunga durata, maggiore cardiotossicità."},
-{q: "Anestetici Generali Inalatori (es. Alotano, Isoflurano)", a: "Il MAC (Minima Concentrazione Alveolare) misura la potenza: più basso è il MAC, più potente è l'anestetico."},
-{q: "Propofol", a: "Anestetico generale endovenoso; rapida induzione e ridestamento; usato per la sedazione procedurale."},
-{q: "Ketamina", a: "Anestetico dissociativo; antagonista dei recettori NMDA del glutammato."},
-{q: "Succinilcolina (Suxametonio)", a: "Bloccante neuromuscolare depolarizzante; causa fascicolazioni seguite da paralisi; rischio di ipertermia maligna."},
-{q: "Rocuronio e Vecuronio", a: "Bloccanti neuromuscolari non depolarizzanti (antagonisti nicotinici competitivi)."},
-{q: "Tossina Botulinica", a: "Inibisce il rilascio di acetilcolina bloccando le proteine SNARE."},
-{q: "Neostigmina (uso in anestesia)", a: "Utilizzata per antagonizzare il blocco dei miorilassanti non depolarizzanti (decumarizzazione)."},
-{q: "Digitalizzazione (fattori che aumentano la tossicità)", a: "Ipopotassiemia (ipokaliemia), ipomagnesiemia, ipercalcemia."},
-{q: "Amiodarone (Classe III)", a: "Blocco dei canali del potassio; emivita molto lunga (settimane); contiene iodio."},
-{q: "Lidocaina (Classe IB)", a: "Antiaritmico usato nelle aritmie ventricolari post-infarto."},
-{q: "Verapamil e Diltiazem (Classe IV)", a: "Calcio-antagonisti usati per il controllo della frequenza nelle aritmie sopraventricolari."},
-{q: "Adenosina", a: "Farmaco d'elezione per la conversione rapida della tachicardia parossistica sopraventricolare; emivita brevissima (<10s)."},
-{q: "Dobutamina", a: "Agonista Beta-1 selettivo; inotropo positivo usato nello shock cardiogeno."},
-{q: "Dopamina (effetti dose-dipendenti)", a: "Dose bassa (D1): vasodilatazione renale; Dose media (Beta-1): inotropismo; Dose alta (Alfa-1): vasocostrizione."},
-{q: "Digitossina vs Digossina", a: "Digitossina: metabolismo epatico; Digossina: escrezione prevalentemente renale."},
-{q: "Eparina non frazionata (UFH) monitoraggio", a: "Si monitora tramite l'aPTT (tempo di tromboplastina parziale attivata)."},
-{q: "Eparine a basso peso molecolare (LMWH, es. Enoxaparina)", a: "Inibiscono prevalentemente il fattore Xa; non richiedono monitoraggio routinario."},
-{q: "Fondaparinux", a: "Inibitore sintetico selettivo del fattore Xa."},
-{q: "Streptochinasi e Alteplase (t-PA)", a: "Farmaci fibrinolitici; convertono il plasminogeno in plasmina per sciogliere il trombo."},
-{q: "Acido Tranexamico", a: "Farmaco antifibrinolitico; inibisce l'attivazione del plasminogeno; usato nelle emorragie."},
-{q: "Tirofiban e Abciximab", a: "Antagonisti dei recettori piastrinici GPIIb/IIIa."},
-{q: "Desmopressina (DDAVP)", a: "Analogo della vasopressina; usato nel diabete insipido centrale e nell'enuresi notturna."},
-{q: "Somatropina", a: "Ormone della crescita (GH) ricombinante."},
-{q: "Levotiroxina (T4)", a: "Farmaco di scelta per il trattamento dell'ipotiroidismo; somministrato a digiuno."},
-{q: "Metimazolo e Propiltiouracile (PTU)", a: "Tionamidi; inibiscono l'enzima perossidasi tiroidea, bloccando la sintesi di ormoni tiroidei."},
-{q: "Iodio radioattivo (I-131)", a: "Usato per l'ablazione della ghiandola tiroidea nell'ipertiroidismo e nel carcinoma tiroideo."},
-{q: "Bisofosfonati (es. Alendronato)", a: "Inibiscono l'attività degli osteoclasti; usati nell'osteoporosi; rischio di esofagite e osteonecrosi della mandibola."},
-{q: "Raloxifene", a: "SERM; agonista sull'osso (aumenta densità minerale) e antagonista su mammella e utero."},
-{q: "Teriparatide", a: "Frammento ricombinante dell'ormone paratiroideo (PTH); stimola la formazione di nuovo osso."},
-{q: "Denosumab", a: "Anticorpo monoclonale anti-RANKL; inibisce la maturazione degli osteoclasti."},
-{q: "Vitamina D (Calcitriolo)", a: "Forma attiva della Vitamina D; aumenta l'assorbimento intestinale di Calcio e Fosfato."},
-{q: "Calcitonina", a: "Ormone che riduce la calcemia inibendo il riassorbimento osseo."},
-{q: "Cinacalcet", a: "Calcimimetico; aumenta la sensibilità dei recettori del calcio sulle paratiroidi, riducendo il PTH."},
-{q: "Sildenafil (Viagra)", a: "Inibitore della fosfodiesterasi-5 (PDE-5); aumenta i livelli di cGMP provocando vasodilatazione nei corpi cavernosi."},
-{q: "Controindicazione Sildenafil", a: "Uso concomitante di nitrati (rischio di ipotensione grave)."},
-{q: "Finasteride", a: "Inibitore della 5-alfa-reduttasi; riduce la conversione di testosterone in diidrotestosterone (DHT); usato per IPB e alopecia."},
-{q: "Tamsulosina", a: "Antagonista alfa-1A selettivo; rilassa la muscolatura liscia prostatica migliorando il flusso urinario."},
-{q: "Contraccettivi orali combinati", a: "Contengono estrogeno e progestinico; inibiscono l'ovulazione sopprimendo FSH e LH."},
-{q: "Effetto avverso progestinici (androgenico)", a: "Acne, irsutismo, aumento di peso (specialmente derivati del testosterone)."},
-{q: "Mifepristone (RU-486)", a: "Antagonista del recettore del progesterone; usato per l'interruzione medica di gravidanza."},
-{q: "Dexametasone", a: "Glucocorticoide a lunga durata d'azione; potente attività antinfiammatoria e quasi nulla attività mineralcorticoide."},
-{q: "Fludrocortisone", a: "Mineralcorticoide sintetico usato nel morbo di Addison."},
-{q: "Spironolattone (usi endocrini)", a: "Antagonista del recettore dell'aldosterone e degli androgeni; usato nell'irsutismo femminile e nell'iperaldosteronismo."},
-{q: "Sorbitolo", a: "Lassativo osmotico e dolcificante; può causare diarrea se assunto in eccesso."},
-{q: "Mesalazina (5-ASA)", a: "Antinfiammatorio locale usato nelle malattie croniche intestinali (IBD) come la rettocolite ulcerosa."},
-{q: "Sulfasalazina", a: "Profarmaco composto da 5-ASA e sulfapiridina; scisso dai batteri del colon."},
-{q: "Loperamide (Imodium) controindicazione", a: "Diarree infettive acute (rischio di megacolon tossico)."},
-{q: "Metoclopramide (Plasil)", a: "Antagonista D2 e agonista 5-HT4; procinetico ed antiemetico; può dare effetti extrapiramidali."},
-{q: "Domperidone", a: "Antagonista D2 procinetico; non passa la BEE (meno effetti extrapiramidali rispetto alla metoclopramide)."},
-{q: "Orlistat", a: "Inibitore della lipasi gastrointestinale; riduce l'assorbimento dei grassi alimentari."},
-{q: "Acido Ursodesossicolico", a: "Riduce la saturazione di colesterolo nella bile; usato per sciogliere calcoli biliari radiotrasparenti."},
-{q: "Salbutamolo (Ventolin)", a: "SABA (Short-Acting Beta Agonist); broncodilatatore a rapida azione per l'attacco acuto d'asma."},
-{q: "Salmeterolo e Formoterolo", a: "LABA (Long-Acting Beta Agonist); broncodilatatori a lunga durata usati nella terapia di mantenimento."},
-{q: "Ipratropio bromuro", a: "Antagonista muscarinico a breve durata (SAMA) usato per via inalatoria."},
-{q: "Tiotropio bromuro", a: "Antagonista muscarinico a lunga durata (LAMA) usato nella BPCO."},
-{q: "Teofillina", a: "Metilxantina; inibisce le fosfodiesterasi e antagonizza i recettori dell'adenosina; basso indice terapeutico."},
-{q: "Zileuton", a: "Inibitore della 5-lipossigenasi; blocca la sintesi dei leucotrieni."},
-{q: "Cromoglicato di sodio", a: "Stabilizzatore dei mastociti; previene il rilascio di mediatori infiammatori; usato nella profilassi dell'asma."},
-{q: "Codeina (uso antitussivo)", a: "Oppioide che agisce sul centro della tosse nel bulbo; dosaggi inferiori rispetto all'uso analgesico."},
-{q: "Destrometorfano", a: "Antitussivo non oppioide; agisce centralmente aumentando la soglia della tosse."},
-{q: "Guaifenesina", a: "Farmaco espettorante; riduce la viscosità delle secrezioni bronchiali."},
-{q: "Efedrina e Pseudoefedrina", a: "Decongestionanti nasali simpaticomimetici; possono causare ipertensione e insonnia."},
-{q: "Glucagone (uso d'emergenza)", a: "Trattamento dell'ipoglicemia grave in pazienti diabetici che non possono assumere zuccheri per via orale."},
-{q: "Succo di pompelmo e farmaci", a: "Inibitore del CYP3A4 intestinale; aumenta la biodisponibilità di farmaci come statine e calcio-antagonisti."},
-{q: "Iperico (Erba di San Giovanni) e farmaci", a: "Potente induttore del CYP3A4; riduce l'efficacia di contraccettivi orali, ciclosporina e warfarin."},
-{q: "Tossicità da Metanolo", a: "Metabolizzato in acido formico; causa acidosi metabolica e cecità; antidoto: Etanolo o Fomepizolo."},
-{q: "Tossicità da Glicole Etilenico", a: "Causa insufficienza renale acuta per formazione di cristalli di ossalato di calcio; antidoto: Fomepizolo."},
-{q: "Monossido di Carbonio (CO) tossicità", a: "Si lega all'emoglobina formando carbossiemoglobina; riduce il trasporto di ossigeno; trattamento: ossigeno iperbarico."},
-{q: "Antidoto per i metalli pesanti (Piombo, Mercurio)", a: "Agenti chelanti come EDTA, Dimercaprol (BAL) o Succimero."},
-{q: "Antidoto per il Ferro", a: "Deferoxamina."},
-{q: "Sindrome Serotoninergica", a: "Eccesso di serotonina (spesso da interazione SSRI e MAO-I); causa ipertermia, rigidità muscolare e instabilità autonomica."},
-{q: "Sindrome Maligna da Neurolettici", a: "Reazione rara agli antipsicotici; ipertermia grave, rigidità 'a tubo di piombo', aumento CPK."},
-{q: "Carbone attivo", a: "Utilizzato nella decontaminazione gastrica per adsorbire tossici non ancora assorbiti; inefficace per alcol e metalli."},
-{q: "Emetina (Siroppo di Ipecacuana)", a: "Induttore del vomito; oggi poco usato e spesso controindicato (es. con sostanze corrosive)."},
-{q: "Farmacogenetica - Polimorfismo CYP2D6", a: "Influenza il metabolismo di tamoxifene, codeina e antidepressivi; distingue metabolizzatori lenti e ultrarapidi."},
-{q: "Deficit di G6PD (Favismo) e farmaci", a: "Rischio di anemia emolitica con farmaci ossidanti come Primachina, Sulfamidici e Nitrofurantoina."},
-{q: "Polimorfismo della Tiopurina S-metiltransferasi (TPMT)", a: "Importante per il dosaggio di Azatioprina e 6-Mercaptopurina per evitare tossicità midollare."},
-{q: "Effetto Disulfiram (Antabuse)", a: "Inibisce l'acetaldeide deidrogenasi; causa accumulo di acetaldeide con vampate, nausea e tachicardia dopo assunzione di alcol."},
-{q: "Reazione di Jarisch-Herxheimer", a: "Reazione acuta (febbre, brividi) dopo l'inizio del trattamento della sifilide con penicillina."},
-{q: "Indice di legame (Binding)", a: "Rapporto tra farmaco legato alle proteine plasmatiche e farmaco libero; solo il libero attraversa le membrane."},
-{q: "Legge di Fick (diffusione passiva)", a: "Il flusso è proporzionale al gradiente di concentrazione, all'area della membrana e al coefficiente di ripartizione."},
-{q: "P-glicoproteina (P-gp)", a: "Trasportatore di efflusso ATP-dipendente; estrude i farmaci dalle cellule (es. barriera ematoencefalica, tumori resistenti)."},
-{q: "Effetto di primo passaggio epatico", a: "Metabolizzazione del farmaco da parte del fegato prima che raggiunga la circolazione sistemica (tipico della via orale)."},
-{q: "Somministrazione sublinguale", a: "Evita l'effetto di primo passaggio epatico perché il drenaggio venoso salta il sistema portale."},
-{q: "Vantaggio della via endovenosa", a: "Biodisponibilità del 100%, rapidità d'azione, possibilità di somministrare grandi volumi."},
-{q: "Cinetica di saturazione (Michaelis-Menten)", a: "La velocità di eliminazione diventa costante e indipendente dalla concentrazione (es. Alcol, Aspirina alte dosi)."},
-{q: "Clearance renale del farmaco", a: "(Velocità di filtrazione + Velocità di secrezione) - Velocità di riassorbimento."},
-{q: "Rapporto pKa e pH (Equazione di Henderson-Hasselbalch)", a: "Determina il grado di ionizzazione di un farmaco; i farmaci non ionizzati sono più liposolubili."},
-{q: "Definizione di Farmaco secondo l'OMS", a: "Qualunque sostanza usata per modificare o esaminare funzioni fisiologiche o stati patologici a beneficio del ricevente."},
-{q: "Modello monocompartimentale", a: "Considera l'organismo come un unico contenitore omogeneo in cui il farmaco si distribuisce istantaneamente."},
-{q: "Modello bicompartimentale", a: "Prevede un compartimento centrale (sangue e organi molto irrorati) e uno periferico (tessuti meno irrorati)."},
-{q: "Biodisponibilità assoluta", a: "Rapporto tra l'AUC ottenuta con una via extravasale e quella ottenuta per via endovenosa."},
-{q: "Biodisponibilità relativa", a: "Confronto tra le AUC di due diverse formulazioni dello stesso farmaco somministrate per la stessa via."},
-{q: "Bioequivalenza", a: "Due farmaci sono bioequivalenti se le loro biodisponibilità (AUC e Cmax) non differiscono in modo significativo."},
-{q: "Legame alle proteine plasmatiche - Albumina", a: "Proteina principale per il legame dei farmaci acidi."},
-{q: "Legame alle proteine plasmatiche - alfa1-glicoproteina acida", a: "Proteina principale per il legame dei farmaci basici."},
-{q: "Volume di distribuzione apparente (Vd)", a: "Volume in cui il farmaco dovrebbe distribuirsi per avere ovunque la stessa concentrazione plasmatica."},
-{q: "Fattori che influenzano il Vd", a: "Liposolubilità del farmaco, legame proteico plasmatico, legame ai tessuti, età e stati patologici (edemi)."},
-{q: "Reazioni di fase II (metabolismo)", a: "Reazioni di coniugazione (glucuronazione, solfatazione, acetilazione) che aumentano l'idrosolubilità."},
-{q: "Glucuronazione", a: "Reazione di fase II mediata dall'enzima UDP-glucuronosiltransferasi (UGT)."},
-{q: "Circolazione enteroepatica", a: "Processo in cui un farmaco escreto nella bile viene riassorbito dall'intestino e riportato al fegato."},
-{q: "Rapporto di estrazione epatico (ER)", a: "Frazione di farmaco che viene rimossa dal sangue durante un singolo passaggio attraverso il fegato."},
-{q: "Farmaci a basso ER (< 0.3)", a: "La loro clearance dipende principalmente dall'attività enzimatica e dal legame proteico (es. Warfarin)."},
-{q: "Farmaci ad alto ER (> 0.7)", a: "La loro clearance dipende principalmente dal flusso ematico epatico (es. Propranololo, Lidocaina)."},
-{q: "Filtrazione glomerulare", a: "Processo passivo; solo il farmaco libero (non legato alle proteine) viene filtrato."},
-{q: "Secrezione tubulare attiva", a: "Avviene nel tubulo prossimale tramite trasportatori specifici (OAT per acidi, OCT per basi)."},
-{q: "Riassorbimento tubulare passivo", a: "Dipende dal gradiente di concentrazione e dal pH urinario (influenza la quota non ionizzata)."},
-{q: "Acidificazione delle urine (con cloruro d'ammonio)", a: "Favorisce l'escrezione di farmaci basici."},
-{q: "Alcalinizzazione delle urine (con bicarbonato)", a: "Favorisce l'escrezione di farmaci acidi (es. in caso di avvelenamento da aspirina)."},
-{q: "Stato stazionario (Steady State)", a: "Condizione in cui la velocità di somministrazione eguaglia la velocità di eliminazione."},
-{q: "Tempo necessario per raggiungere lo Steady State", a: "Circa 4-5 emivite (t 1/2)."},
-{q: "Affinità di un farmaco", a: "Capacità del farmaco di legarsi al proprio recettore; misurata dalla costante di dissociazione (Kd)."},
-{q: "Efficacia (Attività intrinseca)", a: "Capacità del complesso farmaco-recettore di produrre una risposta biologica."},
-{q: "Potenza di un farmaco", a: "Dose o concentrazione necessaria per produrre il 50% dell'effetto massimo (EC50)."},
-{q: "Agonista inverso", a: "Farmaco che si lega al recettore e riduce l'attività basale (costitutiva) del recettore stesso."},
-{q: "Siti allosterici", a: "Siti sul recettore diversi dal sito di legame dell'ortosterico che possono modulare l'affinità o l'efficacia."},
-{q: "Desensibilizzazione dei recettori (Down-regulation)", a: "Riduzione del numero o della sensibilità dei recettori a seguito di una stimolazione prolungata."},
-{q: "Ipersensibilizzazione dei recettori (Up-regulation)", a: "Aumento del numero di recettori a seguito di un blocco cronico con antagonisti."},
-{q: "Recettori accoppiati a proteine Gs", a: "Stimolano l'adenilato ciclasi, aumentando i livelli di cAMP."},
-{q: "Recettori accoppiati a proteine Gi", a: "Inibiscono l'adenilato ciclasi, diminuendo i livelli di cAMP."},
-{q: "Recettori accoppiati a proteine Gq", a: "Attivano la fosfolipasi C (PLC), aumentando IP3, DAG e calcio intracellulare."},
-{q: "Farmacovigilanza", a: "Insieme delle attività dirette a identificare, valutare e prevenire gli effetti avversi dei farmaci."},
-{q: "Reazione avversa di tipo A (Augmented)", a: "Prevedibile, dose-dipendente, correlata all'azione farmacologica."},
-{q: "Reazione avversa di tipo B (Bizarre)", a: "Imprevedibile, non dose-dipendente, spesso su base immunitaria o genetica."},
-{q: "Teratogenesi", a: "Capacità di un farmaco di causare anomalie strutturali o funzionali nell'embrione o nel feto."},
-{q: "Idiosincrasia", a: "Risposta anomala e individuale a un farmaco, spesso dovuta a differenze genetiche enzimatiche."},
-{q: "Dose efficace 50 (ED50)", a: "Dose che produce l'effetto desiderato nel 50% della popolazione testata."},
-{q: "Finestra terapeutica", a: "Intervallo di concentrazioni plasmatiche tra la concentrazione minima efficace e la minima concentrazione tossica."},
-{q: "Organizzazione del Sistema Nervoso Autonomo", a: "Si divide in Simpatico (ortosimpatico), Parasimpatico ed Enterico."},
-{q: "Neurotrasmettitore delle fibre pre-gangliari (Simpatico e Parasimpatico)", a: "Acetilcolina (ACh) che agisce su recettori nicotinici."},
-{q: "Neurotrasmettitore post-gangliare del Parasimpatico", a: "Acetilcolina (ACh) che agisce su recettori muscarinici."},
-{q: "Neurotrasmettitore post-gangliare del Simpatico", a: "Noradrenalina (NA) che agisce su recettori alfa e beta adrenergici (eccezione: ghiandole sudoripare che usano ACh)."},
-{q: "Sintesi dell'Acetilcolina", a: "Prodotta a partire da Colina e Acetil-CoA tramite l'enzima Colina-acetiltrasferasi (ChAT)."},
-{q: "Degradazione dell'Acetilcolina", a: "Inattivata rapidamente dall'enzima Acetilcolinesterasi (AChE) nello spazio sinaptico."},
-{q: "Recettori Muscarinici M1, M3, M5", a: "Accoppiati a proteine Gq (attivano la fosfolipasi C)."},
-{q: "Recettori Muscarinici M2, M4", a: "Accoppiati a proteine Gi (inibiscono l'adenilato ciclasi)."},
-{q: "Localizzazione recettore M2", a: "Prevalentemente nel cuore (effetto cronotropo e inotropo negativo)."},
-{q: "Localizzazione recettore M3", a: "Muscolatura liscia (contrazione), ghiandole esocrine (secrezione) ed endotelio (rilascio di NO)."},
-{q: "Recettori Nicotinici (Nn e Nm)", a: "Recettori-canale (ionotropici) permeabili a Na+ e K+; Nn nei gangli, Nm nella placca neuromuscolare."},
-{q: "Effetti stimolazione Parasimpatica", a: "Miosi, bradicardia, broncocostrizione, aumento motilità gastrointestinale, contrazione vescica (detrusore)."},
-{q: "Pilocarpina", a: "Agonista muscarinico usato nel trattamento del glaucoma (induce miosi e abbassa la pressione intraoculare)."},
-{q: "Vareniclina", a: "Agonista parziale dei recettori nicotinici alfa4-beta2; usata per la disassuefazione dal fumo."},
-{q: "Pralidossima (2-PAM)", a: "Riattivatore dell'acetilcolinesterasi; usato nell'avvelenamento da organofosforici (prima dell'invecchiamento del legame)."},
-{q: "Scopolamina", a: "Antagonista muscarinico usato principalmente per la cinetosi (mal d'auto/mare)."},
-{q: "Ipratropio e Tiotropio (meccanismo)", a: "Antagonisti muscarinici quaternari (non assorbiti); causano broncodilatazione senza effetti sistemici significativi."},
-{q: "Ossibutinina e Tolterodina", a: "Antagonisti muscarinici usati per l'incontinenza urinaria (vescica iperattiva)."},
-{q: "Sintesi delle Catecolamine", a: "Tirosina -> DOPA -> Dopamina -> Noradrenalina -> Adrenalina."},
-{q: "Tirosina Idrossilasi", a: "Tappa limitante della sintesi delle catecolamine."},
-{q: "Recettori Alfa-1 adrenergici", a: "Accoppiati a Gq; causano vasocostrizione, midriasi e contrazione degli sfinteri."},
-{q: "Recettori Alfa-2 adrenergici", a: "Accoppiati a Gi; localizzati presinapticamente, mediano il feedback negativo riducendo il rilascio di NA."},
-{q: "Recettori Beta-1 adrenergici", a: "Accoppiati a Gs; localizzati nel cuore (aumento frequenza e forza) e rene (rilascio renina)."},
-{q: "Recettori Beta-2 adrenergici", a: "Accoppiati a Gs; causano broncodilatazione, vasodilatazione muscolare e glicogenolisi."},
-{q: "Recettori Beta-3 adrenergici", a: "Localizzati nel tessuto adiposo (lipolisi) e nel muscolo detrusore della vescica (rilassamento)."},
-{q: "Adrenalina (Epinefrina) - Affinità", a: "Alta affinità per recettori alfa e beta; a basse dosi prevale l'effetto beta (vasodilatazione), ad alte dosi l'effetto alfa (vasocostrizione)."},
-{q: "Noradrenalina (Norepinefrina) - Affinità", a: "Agisce su alfa-1, alfa-2 e beta-1; scarso effetto sui beta-2."},
-{q: "Isoprenalina (Isoproterenolo)", a: "Agonista beta-adrenergico non selettivo (beta-1 e beta-2); potente stimolante cardiaco e broncodilatatore."},
-{q: "Clonidina", a: "Agonista alfa-2 selettivo ad azione centrale; usato come antipertensivo."},
-{q: "Alfa-metildopa", a: "Profarmaco trasformato in alfa-metilnoradrenalina (agonista alfa-2); farmaco di scelta per l'ipertensione in gravidanza."},
-{q: "Mirabegron", a: "Agonista beta-3 selettivo; usato per il trattamento della vescica iperattiva."},
-{q: "Fenilefrina", a: "Agonista alfa-1 selettivo; usato come decongestionante nasale e midriatico."},
-{q: "Doxazosina e Terazosina (usi)", a: "Trattamento dell'ipertensione e dell'ipertrofia prostatica benigna (IPB)."},
-{q: "Carvedilolo e Labetalolo", a: "Beta-bloccanti non selettivi che possiedono anche attività alfa-1 bloccante (causano vasodilatazione)."},
-{q: "Nebivololo", a: "Beta-1 bloccante altamente selettivo che stimola la produzione di ossido nitrico (NO) endoteliale."},
-{q: "Esmololo", a: "Beta-1 bloccante a brevissima emivita (circa 10 min); somministrato per via endovenosa in emergenza."},
-{q: "Reserpina", a: "Blocca il trasportatore vescicolare delle monoamine (VMAT), svuotando le riserve di noradrenalina; causa depressione grave."},
-{q: "Cocaina e Antidepressivi Triciclici (interazione adrenergica)", a: "Inibiscono il reuptake della noradrenalina (NET), potenziando gli effetti simpatici."},
-{q: "Anfetamina (meccanismo)", a: "Induce il rilascio di catecolamine dalle terminazioni nervose indipendentemente dall'esocitosi (spiazza NA dalle vescicole)."},
-{q: "Fenossibenzamina", a: "Antagonista alfa-adrenergico irreversibile; usato nel pre-operatorio del feocromocitoma."},
-{q: "Autoregolazione del flusso renale", a: "Mantenuta costante tra 80 e 180 mmHg di pressione arteriosa grazie al riflesso miogeno e al feedback tubulo-glomerulare."},
-{q: "Apparato Juxtaglomerulare", a: "Sito di sintesi e rilascio della renina in risposta a ipotensione, iposodiemia o stimolazione beta-1."},
-{q: "Angiotensina II (effetti)", a: "Potente vasocostrittore, stimola il rilascio di aldosterone, promuove la crescita dei miociti cardiaci (remodeling)."},
-{q: "Aldosterone (meccanismo)", a: "Agisce sul tubulo collettore aumentando l'espressione dei canali ENaC e della pompa Na+/K+; riassorbe Na+ ed espelle K+ e H+."},
-{q: "Aliskiren", a: "Inibitore diretto della renina; blocca la conversione dell'angiotensinogeno in angiotensina I."},
-{q: "Effetto 'Escape' dell'aldosterone", a: "Fenomeno per cui, nonostante l'uso di ACE-inibitori, i livelli di aldosterone tornano a salire tramite vie non dipendenti dall'ACE."},
-{q: "Sacubitril", a: "Inibitore della neprilisina; aumenta i livelli di peptidi natriuretici (ANP/BNP)."},
-{q: "Sacubitril/Valsartan (ARNI)", a: "Associazione usata nello scompenso cardiaco con frazione d'eiezione ridotta."},
-{q: "Idralazina", a: "Vasodilatatore arterioso diretto; usato nell'ipertensione grave o in gravidanza; può causare sindrome lupus-simile."},
-{q: "Minoxidil (uso antipertensivo)", a: "Apre i canali del potassio causando iperpolarizzazione e vasodilatazione; causa ipertricosi."},
-{q: "Nitroprussiato di sodio", a: "Vasodilatatore venoso e arterioso potente usato nelle emergenze ipertensive; rischio di intossicazione da cianuro."},
-{q: "Fenoldopam", a: "Agonista dei recettori dopaminergici D1; causa vasodilatazione renale; usato nelle emergenze ipertensive."},
-{q: "Classificazione di Vaughan Williams", a: "Sistema di classificazione degli antiaritmici basato sul meccanismo elettrofisiologico dominante."},
-{q: "Antiaritmici Classe IC (es. Flecainide)", a: "Potenti bloccanti dei canali Na+; rallentano la conduzione senza alterare la durata del potenziale d'azione."},
-{q: "Effetto pro-aritmico", a: "Capacità di alcuni antiaritmici (specialmente Classe IC e III) di innescare nuove aritmie come la 'Torsione di punta'."},
-{q: "Sotalolo", a: "Antiaritmico con proprietà di Classe II (beta-bloccante) e Classe III (blocco canali K+)."},
-{q: "Ivabradina", a: "Inibitore selettivo della corrente If (pacemaker) nel nodo seno-atriale; riduce la frequenza cardiaca senza influenzare l'inotropismo."},
-{q: "Ranolazina", a: "Inibitore della corrente tardiva del sodio; usata nell'angina cronica stabile."},
-{q: "Effetto 'Furto della sottoclavia' farmacologico", a: "Fenomeno di ridistribuzione del flusso ematico che peggiora l'ischemia in zone già ipoperfuse (es. con alcuni vasodilatatori potenti)."},
-{q: "Pre-carico (Preload)", a: "Tensione della parete ventricolare a fine diastole (correlata al ritorno venoso)."},
-{q: "Post-carico (Afterload)", a: "Resistenza che il ventricolo deve vincere per espellere il sangue (correlata alle resistenze periferiche)."},
-{q: "Meccanismo d'azione dei Nitrati nell'angina", a: "Riducono principalmente il pre-carico tramite venodilatazione, diminuendo il lavoro cardiaco."},
-{q: "Tolleranza ai nitrati", a: "Perdita di efficacia dovuta alla deplezione di gruppi sulfidrilici; si previene con un intervallo libero da farmaco (8-12 ore)."},
-{q: "Aspirina a basso dosaggio (100mg)", a: "Effetto antiaggregante selettivo dovuto all'inibizione irreversibile della COX-1 piastrinica."},
-{q: "Ticagrelor", a: "Inibitore reversibile del recettore P2Y12 (non richiede attivazione metabolica, a differenza di Clopidogrel)."},
-{q: "Vorapaxar", a: "Antagonista del recettore PAR-1 attivato dalla trombina sulle piastrine."},
-{q: "Inibitori di PCSK9 (es. Evolocumab)", a: "Anticorpi monoclonali che impediscono la degradazione del recettore LDL, riducendo drasticamente il colesterolo plasmatico."},
-{q: "Fibrati (es. Fenofibrato)", a: "Agonisti del recettore PPAR-alfa; aumentano l'espressione della lipoproteina lipasi (LPL) riducendo i trigliceridi."},
-{q: "Acido Nicotinico (Niacina)", a: "Riduce la sintesi di VLDL e aumenta l'HDL; causa 'flushing' (arrossamento) mediato da prostaglandine."},
-{q: "Colestiramina", a: "Resina sequestrante gli acidi biliari; interferisce con l'assorbimento di farmaci liposolubili e vitamine."},
-{q: "Acetazolamide", a: "Inibitore dell'anidrasi carbonica nel tubulo prossimale; usato per il glaucoma e il mal di montagna."},
-{q: "Mannitolo", a: "Diuretico osmotico; agisce su tutto il nefrone (principalmente ansa); usato per ridurre l'edema cerebrale."},
-{q: "Conivaptan e Tolvaptan", a: "Antagonisti dei recettori della vasopressina (V2); chiamati 'Acquaretici' perché espellono acqua libera senza elettroliti."},
-{q: "Nesiritide", a: "Forma ricombinante del peptide natriuretico di tipo B (BNP)."},
-{q: "Eplerenone", a: "Antagonista selettivo dell'aldosterone; ha meno effetti collaterali endocrini (ginecomastia) rispetto allo spironolattone."},
-{q: "Dopamina a dosi 'diuretiche'", a: "Concetto controverso; la dose bassa stimola i recettori D1 renali aumentando il flusso ematico, ma non è più raccomandata per prevenire l'insufficienza renale."},
-{q: "Amiloride e Triamterene", a: "Bloccanti diretti dei canali del sodio epiteliali (ENaC) nel tubulo collettore."},
-{q: "Effetto dei diuretici tiazidici sull'acido urico", a: "Possono causare iperuricemia competendo con il trasportatore degli urati."},
-{q: "Effetto dei diuretici dell'ansa sul calcio", a: "Aumentano l'escrezione di calcio (usati nell'ipercalcemia)."},
-{q: "Effetto dei tiazidici sul calcio", a: "Riducono l'escrezione di calcio (utili nell'ipercalciuria per prevenire calcoli)."},
-{q: "Post-Antibiotic Effect (PAE)", a: "Periodo di soppressione della crescita batterica che persiste dopo che la concentrazione dell'antibiotico è scesa sotto la MIC."},
-{q: "Antibiotici Concentrazione-dipendenti", a: "L'efficacia dipende dal picco ematico (Cmax/MIC); es. Aminoglicosidi e Fluorochinoloni."},
-{q: "Antibiotici Tempo-dipendenti", a: "L'efficacia dipende dal tempo in cui la concentrazione resta sopra la MIC (T > MIC); es. Beta-lattamici."},
-{q: "Acido Clavulanico e Tazobactam", a: "Inibitori delle beta-lattamasi (suicidi); usati in associazione per proteggere le penicilline dalla degradazione."},
-{q: "Carbapenemi (es. Imipenem, Meropenem)", a: "Antibiotici beta-lattamici a spettro molto ampio; resistenti a quasi tutte le beta-lattamasi."},
-{q: "Cilastatina", a: "Inibitore della deidropeptidasi renale; somministrata con Imipenem per prevenirne la degradazione renale."},
-{q: "Aztreonam", a: "Monobattamico attivo solo contro aerobi Gram-negativi; non presenta cross-reattività allergica con le penicilline."},
-{q: "Linezolid (meccanismo)", a: "Inibisce la sintesi proteica legandosi al sito 23S della subunità 50S; attivo contro MRSA e VRE."},
-{q: "Tigeciclina", a: "Glicilciclina derivata dalle tetracicline; supera i meccanismi di resistenza (efflusso) delle tetracicline classiche."},
-{q: "Daptomicina (meccanismo)", a: "Lipopeptide che causa depolarizzazione della membrana cellulare batterica; attiva solo contro Gram+."},
-{q: "Rifampicina (meccanismo)", a: "Inibisce la RNA polimerasi DNA-dipendente batterica; usata nella tubercolosi; potente induttore enzimatico."},
-{q: "Isoniazide (INH)", a: "Profarmaco attivato dalla catalasi-perossidasi batterica (KatG); inibisce la sintesi di acidi micolici."},
-{q: "Pirazinamide ed Etambutolo", a: "Farmaci di prima linea per la tubercolosi; l'Etambutolo può causare neurite ottica retrobulbare."},
-{q: "Dapsonone", a: "Farmaco d'elezione per il trattamento della lebbra (Morbo di Hansen)."},
-{q: "Amfotericina B - Formulazioni lipidiche", a: "Sviluppate per ridurre la nefrotossicità mantenendo l'efficacia antifungina."},
-{q: "Caspofungina (Echinocandine)", a: "Inibisce la sintesi del beta-(1,3)-D-glucano, componente della parete cellulare fungina."},
-{q: "Flucitosina", a: "Antimicotico antimetabolita; convertito in 5-fluorouracile solo nelle cellule fungine."},
-{q: "Terbinafina", a: "Inibisce l'enzima squalene epossidasi; usata per le onicomicosi."},
-{q: "Ribavirina", a: "Analogo nucleosidico a largo spettro usato per l'Epatite C e il virus respiratorio sinciziale (RSV)."},
-{q: "Inibitori della polimerasi NS5B (es. Sofosbuvir)", a: "Farmaci ad azione diretta (DAA) che hanno rivoluzionato la cura dell'Epatite C."},
-{q: "Inibitori dell'integrasi HIV (es. Raltegravir)", a: "Impediscono l'integrazione del DNA virale nel genoma della cellula ospite."},
-{q: "Maraviroc", a: "Antagonista del recettore CCR5; impedisce l'ingresso dell'HIV nelle cellule (tropismo R5)."},
-{q: "Enfuvirtide", a: "Inibitore della fusione dell'HIV; si lega alla glicoproteina gp41."},
-{q: "Artemisinina", a: "Farmaco antimalarico derivato da piante; produce radicali liberi che danneggiano il parassita."},
-{q: "Clorochina", a: "Antimalarico che impedisce la formazione di emozina; alta resistenza in molte aree del mondo."},
-{q: "Alchilanti bifunzionali", a: "Agenti chimici capaci di formare legami crociati (cross-link) tra i due filamenti di DNA (es. Mechloretamina)."},
-{q: "Nitrosuree (es. Carmustina, Lomustina)", a: "Agenti alchilanti molto liposolubili; capaci di attraversare la barriera ematoencefalica (usati per tumori cerebrali)."},
-{q: "Dacarbazina e Temozolomide", a: "Agenti alchilanti usati nel trattamento del melanoma e dei gliomi."},
-{q: "Metotressato - Rescue con Leucovorin", a: "Somministrazione di acido folinico per proteggere le cellule sane dalla tossicità del metotressato ad alte dosi."},
-{q: "Pemetrexed", a: "Antimetabolita multi-target; inibisce timidilato sintasi, DHFR e GARFT."},
-{q: "Gemcitabina", a: "Analogo della citidina che inibisce la sintesi del DNA; usata nel tumore del pancreas e del polmone."},
-{q: "Etoposide (VP-16)", a: "Inibitore della topoisomerasi II; causa rotture del DNA a doppio filamento."},
-{q: "Irinotecan e Topotecan", a: "Inibitori della topoisomerasi I; derivati della camptotecina."},
-{q: "Bevacizumab", a: "Anticorpo monoclonale anti-VEGF; inibisce l'angiogenesi tumorale."},
-{q: "Cetuximab e Panitumumab", a: "Anticorpi monoclonali diretti contro il recettore EGFR."},
-{q: "Pembrolizumab e Nivolumab", a: "Inibitori dei checkpoint immunitari (anti-PD1); riattivano la risposta delle cellule T contro il tumore."},
-{q: "Ipilimumab", a: "Anticorpo anti-CTLA-4; potenzia l'attivazione dei linfociti T."},
-{q: "L-Asparaginasi", a: "Enzima che depleta l'asparagina plasmatica; usato nella Leucemia Linfoblastica Acuta."},
-{q: "Talidomide (usi moderni)", a: "Effetto anti-angiogenetico e immunomodulante; usato nel mieloma multiplo (teratogeno)."},
-{q: "Bortezomib", a: "Inibitore del proteasoma; induce l'apoptosi nelle cellule del mieloma multiplo."},
-{q: "Segnalazione spontanea (Farmacovigilanza)", a: "Metodo principale per identificare segnali di sospette reazioni avverse post-marketing."},
-{q: "Rapporto di Nesso di Causalità", a: "Valutazione della probabilità che un evento avverso sia stato causato effettivamente dal farmaco (Algoritmo di Naranjo)."},
-{q: "Farmacoepidemiologia", a: "Studio dell'uso e degli effetti dei farmaci in ampie popolazioni umane."},
-{q: "Studi Caso-Controllo", a: "Studi retrospettivi che confrontano soggetti con una malattia (casi) e senza (controlli) riguardo all'esposizione a un farmaco."},
-{q: "Studi di Coorte", a: "Studi prospettici o retrospettivi che seguono nel tempo gruppi esposti e non esposti a un farmaco."},
-{q: "Defined Daily Dose (DDD)", a: "Unità di misura della spesa/consumo farmaceutico; rappresenta la dose media di mantenimento giornaliera per l'indicazione principale."},
-{q: "Farmacogenomica", a: "Studio delle basi genetiche della variabilità individuale nella risposta ai farmaci a livello dell'intero genoma."},
-{q: "Polimorfismo UGT1A1 e Irinotecan", a: "Varianti genetiche che riducono la glucuronazione dell'SN-38 (metabolita attivo), aumentando il rischio di neutropenia grave."},
-{q: "HLA-B*5701 e Abacavir", a: "La presenza di questo allele è associata a un altissimo rischio di reazioni di ipersensibilità grave al farmaco."},
-{q: "Fitovigilanza", a: "Sistema di monitoraggio delle sospette reazioni avverse causate da prodotti di origine vegetale (integratori, fitoterapici)."},
-{q: "Interazione Ginkgo Biloba e Anticoagulanti", a: "Può aumentare il rischio di emorragia per inibizione del fattore di attivazione piastrinica (PAF)."},
-{q: "Effetto del Ginseng sulla Glicemia", a: "Può causare ipoglicemia; cautela nei pazienti diabetici in terapia farmacologica."},
-{q: "Tossicità da Alcaloidi della Belladonna", a: "Causa sindrome anticolinergica: 'caldo come una stufa, rosso come una barbabietola, secco come un osso, cieco come un pipistrello, pazzo come un cappellaio'."},
-{q: "Curaro (D-tubocurarina)", a: "Prototipo dei bloccanti neuromuscolari non depolarizzanti di origine naturale."},
-{q: "Resistenza Incrociata (Cross-resistance)", a: "Fenomeno per cui un batterio resistente a un antibiotico risulta resistente anche ad altri della stessa classe o con meccanismo simile."},
-{q: "Sperimentazione Clinica di Fase IV", a: "Studi condotti dopo l'immissione in commercio del farmaco (sorveglianza post-marketing)."},
+// Script generato dai file: "Domande Farmaco OK.pdf" e "Domande di Farmacologia ordinate.docx"
+// Ogni oggetto contiene la proprietà 'domanda' e 'risposta' estratte fedelmente dal testo.
+    // --- INIZIO FILE: Domande Farmaco OK.pdf ---
+    {
+        "id": "1",
+        "domanda": "Quale tra i seguenti ordini di potenza meglio descrive i risultati mostrati nel grafico SP?",
+        "risposta": "SP >> NKA > NKB"
+    },
+    {
+        "id": "2",
+        "domanda": "Gli effetti di attivazione di quali recettori possono essere studiati in una scala di tempi di msec?",
+        "risposta": "Recettore nicotinico"
+    },
+    {
+        "id": "3",
+        "domanda": "Gli effetti della attivazione di un recettore canale li studiamo in una scala di tempi espressa in:",
+        "risposta": "Msec"
+    },
+    {
+        "id": "4",
+        "domanda": "Quali tra i seguenti sono recettori con attività tirosin chinasica?",
+        "risposta": "Recettore per il fattore di crescita neuronale / Recettori serotoninergici / Recettori del GABA / Recettori adrenergici"
+    },
+    {
+        "id": "5",
+        "domanda": "II pA2 e' un parametro farmacologico che stima:",
+        "risposta": "La potenza di un antagonista competitivo"
+    },
+    {
+        "id": "6", // Nota: Nel file originale la 6 e la 7 sembrano fuse o vuote, ma il testo prosegue. Estraggo il testo presente.
+        "domanda": "Un antagonista non competitivo causa i seguenti cambiamenti nella curva concentrazione risposta dell'agonista:",
+        "risposta": "Progressiva diminuzione dell'effetto massimo"
+    },
+    {
+        "id": "7",
+        "domanda": "Quali sono i parametri necessari per definire univocamente una curva concentrazione risposta?",
+        "risposta": "EC50, slope, bottom, top"
+    },
+    {
+        "id": "8",
+        "domanda": "Quali tra i seguenti sono recettori canale?",
+        "risposta": "Recettori nicotinici"
+    },
+    {
+        "id": "9",
+        "domanda": "Il recettore schematizzato nella figura rappresenta:",
+        "risposta": "Un recettore enzima"
+    },
+    {
+        "id": "10",
+        "domanda": "L'efficacia di un agonista parziale:",
+        "risposta": "Dipende fortemente dalla preparazione in cui viene testato"
+    },
+    {
+        "id": "11",
+        "domanda": "Quale tra i seguenti effetti dei farmaci non prevede un meccanismo di azione recettoriale?",
+        "risposta": "Effetto diuretico del mannitolo"
+    },
+    {
+        "id": "12",
+        "domanda": "Gli effetti della attivazione di un recettore enzima li studiamo in una scala di tempi espressa in:",
+        "risposta": "Sec e minuti"
+    },
+    {
+        "id": "13",
+        "domanda": "Nel grafico di Schild il pA2?",
+        "risposta": "Corrisponde all'intercetta sull'asse delle ascisse [del log(antagonista) e sull'asse delle ordinate log (CR-1)]"
+    },
+    {
+        "id": "14",
+        "domanda": "Un agonista parziale testato in diverse preparazioni può mostrare efficacia diversa fino a:",
+        "risposta": "Comportarsi da antagonista puro o da agonista pieno"
+    },
+    {
+        "id": "15",
+        "domanda": "Un agonista inverso:",
+        "risposta": "Ha azione opposta a quella dell'agonista"
+    },
+    {
+        "id": "16",
+        "domanda": "Quali sono ragionevolmente i titoli degli assi di questo grafico?",
+        "risposta": "X tempo, Y concentrazioni plasmatiche di farmaco"
+    },
+    {
+        "id": "17",
+        "domanda": "Le proteine G sono:",
+        "risposta": "Eterotrimeri"
+    },
+    {
+        "id": "18",
+        "domanda": "Definiamo agonista parziale un farmaco che mostra?",
+        "risposta": "Una efficacia inferiore a quella di un agonista pieno"
+    },
+    {
+        "id": "19",
+        "domanda": "Tra gli agonisti per i recettori accoppiati a proteine G possiamo elencare:",
+        "risposta": "Tutte le altre risposte sono corrette"
+    },
+    {
+        "id": "20",
+        "domanda": "In un esperimento di binding recettoriale possiamo derivare la Kd dal seguente rapporto:",
+        "risposta": "Koff/Kon"
+    },
+    {
+        "id": "21",
+        "domanda": "I recettori oppioidi sono accoppiato a proteine G del tipo:",
+        "risposta": "Gi"
+    },
+    {
+        "id": "22",
+        "domanda": "Le kinasi dei recettori 7TM fosforilano residui ammiacidici che si trovano:",
+        "risposta": "Nella porzione C terminale del recettore"
+    },
+    {
+        "id": "23",
+        "domanda": "Il meccanismo di trasduzione del segnale di recettori accoppiati a proteine $Gq/11$ prevede:",
+        "risposta": "Aumento delle concentrazioni citoplasmatiche di $Ca^{2+}$+"
+    },
+    {
+        "id": "24",
+        "domanda": "Quale parametro farmacologico viene stimato utilizzando il grafico di Schild?",
+        "risposta": "Potenza di un antagonista competitivo"
+    },
+    {
+        "id": "25",
+        "domanda": "In che rapporto stanno la curva di occupazione (che ricaviamo da un esperimento di binding) e quella di attivazione (che ricaviamo da un esperimento funzionale) di un determinato recettore?",
+        "risposta": "La posizione relativa delle due curve e' diversa nelle diverse preparazioni"
+    },
+    {
+        "id": "26",
+        "domanda": "La subunità alpha delle G proteine:",
+        "risposta": "LDP/GTP"
+    },
+    {
+        "id": "27",
+        "domanda": "In quante classi strutturali sono classificati i recettori di membrana?",
+        "risposta": "3"
+    },
+    {
+        "id": "28",
+        "domanda": "Il recettore alphal adrenergico è accoppiato a proteine G del tipo:",
+        "risposta": "Gq"
+    },
+    {
+        "id": "29",
+        "domanda": "Il meccanismo di trasduzione del segnale di recettori accoppiati a proteine Gi prevede:",
+        "risposta": "Riduzione delle concentrazioni citoplasmatiche di cAMP"
+    },
+    {
+        "id": "30",
+        "domanda": "In quante classi strutturali sono classificati i recettori?",
+        "risposta": "4"
+    },
+    {
+        "id": "31",
+        "domanda": "I recettori accoppiati a proteine G sono anche noti come?",
+        "risposta": "Recettori 7TM"
+    },
+    {
+        "id": "32",
+        "domanda": "Il meccanismo di trasduzione del segnale dei recettori beta adrenergici prevede:",
+        "risposta": "Aumento delle concentrazioni citoplasmatiche di CAMP"
+    },
+    {
+        "id": "33",
+        "domanda": "La subunità alpha delle G proteine è dotata di attivatà enzimatica:",
+        "risposta": "GTPasica"
+    },
+    {
+        "id": "34",
+        "domanda": "In un esperimento di binding recettoriale possiamo usare Bmax per stimare:",
+        "risposta": "La densità recettoriale"
+    },
+    {
+        "id": "35",
+        "domanda": "Il meccanismo di trasduzione del segnale dei recettori alphal adrenergici prevede:",
+        "risposta": "Aumento delle concentrazioni citoplasmatiche di $Ca^{2+}$"
+    },
+    {
+        "id": "36",
+        "domanda": "I recettori per gli ormoni tiroidei sono recettori:",
+        "risposta": "Intracellulari"
+    },
+    {
+        "id": "37",
+        "domanda": "Un antagonista competitivo causa i seguenti cambiamenti nella curva concentrazione risposta dell'agonista:",
+        "risposta": "Spostamento a destra senza modificazioni dell'effetto massimo"
+    },
+    {
+        "id": "38",
+        "domanda": "Il recettore beta-adrenergico tipo 2 è accoppiato a:",
+        "risposta": "Proteina Gs"
+    },
+    {
+        "id": "39",
+        "domanda": "Gli effetti della attivazione di un recettore GPCR li studiamo in una scala di tempi espressa in:",
+        "risposta": "Sec e minuti"
+    },
+    {
+        "id": "40",
+        "domanda": "Per interagire con beta arrestina un recettore accoppiato a proteine G deve essere fosforilato da:",
+        "risposta": "Specifiche kinasi (GRK)"
+    },
+    {
+        "id": "41",
+        "domanda": "Cosa si intende per finestra terapeutica?",
+        "risposta": "L'intervallo di concentrazioni plasmatiche del farmaco tra la concentrazione minima efficace nel determinare l'effetto per il quale il farmaco è stato prescritto e la concentrazione minima in grado di evocare effetti avversi"
+    },
+    {
+        "id": "42",
+        "domanda": "Cosa si intende per indice terapeutico?",
+        "risposta": "Il rapporto tra la LD50 e la ED50 del farmaco"
+    },
+    {
+        "id": "43",
+        "domanda": "Un farmaco ha indice terapeutico basso quando:",
+        "risposta": "LD50 e ED50 hanno valori simili"
+    },
+    {
+        "id": "44",
+        "domanda": "In assenza di recettori costitutivamente attivi, un agonista inverso si comporta come:",
+        "risposta": "Agonista biased / Agonista parziale / Agonista pieno / Antagonista"
+    },
+    {
+        "id": "45",
+        "domanda": "Cosa troviamo negli assi X e Y del grafico Schild per la stima del pA2?",
+        "risposta": "X=log[antagonista]; Y=log(CR-1)"
+    },
+    {
+        "id": "46",
+        "domanda": "Il recettore a 1 adrenergico è accoppiato a proteine G del tipo:",
+        "risposta": "$Gq/Gs/Go/Gi$"
+    },
+    {
+        "id": "47",
+        "domanda": "Una somministrazione di 3mg di farmaco A provoca lo stesso effetto di una somministrazione di 300mg di faramco B. Indica la risposta corretta:",
+        "risposta": "Il farmaco A è 100 volte più potente di B"
+    },
+    {
+        "id": "48",
+        "domanda": "Quale delle seguenti condizioni non aiuta ad aumentare il flusso di un farmaco attraverso la membrana biologica?",
+        "risposta": "Diminuzione del coefficiente di ripartizione olio/acqua"
+    },
+    {
+        "id": "50",
+        "domanda": "Le proteine G sono:",
+        "risposta": "Implicate nella trasduzione del segnale / proteine extracellulari che legano il GTP"
+    },
+    {
+        "id": "51",
+        "domanda": "Cosa implica la presenza di recettori di riserva:",
+        "risposta": "Spostamento di ED50"
+    },
+    {
+        "id": "52",
+        "domanda": "Quali fattori non influenzano la risposta ai farmaci:",
+        "risposta": "Età / sesso / allattamento / gravidanza"
+    },
+    {
+        "id": "53",
+        "domanda": "Il simporto è:",
+        "risposta": "Meccanismo di trasporto facilitato"
+    },
+    {
+        "id": "54",
+        "domanda": "Come agiscono i recettori chiansici:",
+        "risposta": "fosforilando proteine target"
+    },
+    {
+        "id": "55",
+        "domanda": "Coefficiente di diffusione è:",
+        "risposta": "inversamente proporzionale a PM"
+    },
+    {
+        "id": "56",
+        "domanda": "Alcuni studi hanno indicato che circa il 90% degli adrenocettori beta del cuore sono recettori di riserva. Quali delle seguenti affermazioni sui recettori di riserva è più corretta?",
+        "risposta": "La presenza di recettori di riserva può essere ipotizzata osservando che la EC50 è inferiore alla Kd per l'agonista"
+    },
+    {
+        "id": "57",
+        "domanda": "I leucotrieni causano broncocostrizione (mediata da specifico recettore) in un pz affetto da asma, quando si somministra salbutamolo (che agisce stimolando i recettori beta2) al pz si ottiene broncodilatazione. Quale dei seguenti termini descrive meglio l'azione del salbutamolo in queste circostanze?",
+        "risposta": "Antagonismo fisiologico"
+    },
+    {
+        "id": "58",
+        "domanda": "Volume di distribuzione dei farmaci si misura in?",
+        "risposta": "Litri"
+    },
+    {
+        "id": "59",
+        "domanda": "I simporti sono dei:",
+        "risposta": "meccanismi di trasporto attivo secondario legato al gradiente elettrochimico di ioni"
+    },
+    {
+        "id": "60",
+        "domanda": "Un agonista inverso ha azione opposta a quella dell'agonista quando:",
+        "risposta": "bassa concentrazione di ligando endogeno / alta concentrazione di ligando endogeno / presenza di recettori costitutivamente attivi / presenza di recettori di riserva"
+    },
+    {
+        "id": "61",
+        "domanda": "Cosa vuol dire desensibilizzazione di un recettore?",
+        "risposta": "Sinonimo di tolleranza / ridotta risposta recettoriale al farmaco"
+    },
+    {
+        "id": "62",
+        "domanda": "Desensibilizzazione recettoriale:",
+        "risposta": "riduzione della risposta recettoriale in seguito a somministrazione farmaco"
+    },
+    {
+        "id": "63",
+        "domanda": "AUC cosa rappresenta l'area sotto la curva?",
+        "risposta": "Concentrazione del farmaco in un certo intervallo di tenpo"
+    },
+    {
+        "id": "64",
+        "domanda": "Cosa accade ad un farmaco legato ad una proteina plasmatica?",
+        "risposta": "Non passa attraverso la parete dei capillari"
+    },
+    {
+        "id": "65",
+        "domanda": "Farmaco A è più potente di farmaco B, dunque:",
+        "risposta": "presenta ED50 più piccoli"
+    },
+    {
+        "id": "66",
+        "domanda": "Tra i vantaggi della via endovenosa possiamo elencare:",
+        "risposta": "Tutte le precedenti risposte"
+    },
+    {
+        "id": "67",
+        "domanda": "Quale tra queste affermazioni è corretta?",
+        "risposta": "Nella gran parte dei casi, il $T1/2$ di un farmaco non dipende dalla dose somministrata"
+    },
+    {
+        "id": "68",
+        "domanda": "Il volume apparente di distribuzione dei farmaci:",
+        "risposta": "È inversamente proporzionale alla concentrazione plasmatica del farmaco all'equilibrio di distribuzione"
+    },
+    {
+        "id": "69",
+        "domanda": "Il citocromo che riconosce la maggior percentuale di farmaci come substrato è il seguente:",
+        "risposta": "3A4/5"
+    },
+    {
+        "id": "70",
+        "domanda": "La barriera emato-encefalica:",
+        "risposta": "È composta dalle cellule endoteliali che compongono i vasi del sistema nervoso centrale"
+    },
+    {
+        "id": "71",
+        "domanda": "Tra le reazioni di fase I possiamo elencare:",
+        "risposta": "S-ossidazione, N-ossidazione, dealogenazione"
+    },
+    {
+        "id": "72",
+        "domanda": "Le vie di somministrazione enterali comprendono:",
+        "risposta": "Somministrazione orale, rettale e sublinguale"
+    },
+    {
+        "id": "73",
+        "domanda": "Quale tra questa serie di fenomeni permette di prevedere l'andamento temporale delle concentrazioni plasmatiche dei farmaci?",
+        "risposta": "Assorbimento, distribuzione, metabolismo ed eliminazione"
+    },
+    {
+        "id": "74",
+        "domanda": "II metabolismo dei farmaci viene solitamente suddiviso nelle seguenti fasi:",
+        "risposta": "Fase I o funzionalizzazione; fase II o coniugazione"
+    },
+    {
+        "id": "75",
+        "domanda": "II T1/2 può essere calcolato con la seguente equazione:",
+        "risposta": "$T1/2=0.693^{*}Vd/CL$"
+    },
+    {
+        "id": "76",
+        "domanda": "Sono comunemente disponibili formulazioni a lento rilascio per farmaci che possono essere somministrati:",
+        "risposta": "Per via orale, intramuscolare e sottocute"
+    },
+    {
+        "id": "77",
+        "domanda": "Tra i vantaggi della via orale possiamo elencare:",
+        "risposta": "Non richiede l'intervento di personale specializzato"
+    },
+    {
+        "id": "78",
+        "domanda": "Possiamo definire la clereance di un farmaco come:",
+        "risposta": "Volume di plasma dal quale viene rimosso il farmaco nella unita di tempo"
+    },
+    {
+        "id": "79",
+        "domanda": "Quali sono i 4 parametri fondamentali della farmacocinetica?",
+        "risposta": "Biodisponibilità, volume di distribuzione, clearance, emivita"
+    },
+    {
+        "id": "80",
+        "domanda": "Per via di somministrazione transdermica si intende:",
+        "risposta": "L'applicazione di un farmaco sulla cute per avere effetti sistemici"
+    },
+    {
+        "id": "81",
+        "domanda": "Possiamo definire l'emivita di un farmaco come:",
+        "risposta": "Il tempo necessario per dimezzare le concentrazioni plasmatiche del farmaco"
+    },
+    {
+        "id": "82",
+        "domanda": "Cosa rappresenta F?",
+        "risposta": "Biodisponibilità"
+    },
+    {
+        "id": "83",
+        "domanda": "Quali di queste sono reazioni enzimatiche di fase II?",
+        "risposta": "Tutte le altre risposte sono corrette"
+    },
+    {
+        "id": "84",
+        "domanda": "Il volume apparente di distribuzione dei farmaci può variare entro il range:",
+        "risposta": "$5-50.000~litri/70kg$"
+    },
+    {
+        "id": "85",
+        "domanda": "Cosa si intende per effetto first pass (o di primo passaggio)?",
+        "risposta": "Il metabolismo epatico di una quota rilevante del farmaco prima che questo raggiunga la circolazione sistemica"
+    },
+    {
+        "id": "86",
+        "domanda": "Una reazione idiosincrasica è:",
+        "risposta": "Una reazione abnorme dovuta a una condizione genetiche"
+    },
+    {
+        "id": "87",
+        "domanda": "In quale organo avviene principalmente il metabolismo dei farmaci?",
+        "risposta": "Fegato"
+    },
+    {
+        "id": "88",
+        "domanda": "Formulazioni diverse possono influire significativamente su:",
+        "risposta": "Cmax e Tmax"
+    },
+    {
+        "id": "89",
+        "domanda": "Il flusso molare di una sostanza che attraversa una membrana per diffusione semplice:",
+        "risposta": "Aumenta all'aumentare dell'area della membrana"
+    },
+    {
+        "id": "90",
+        "domanda": "La dose di carico di un farmaco può essere calcolata con la seguente equazione (Q dose assorbita, C concentrazione plasmatica, V volume distribuzione, $T1/2$ emivita):",
+        "risposta": "$O=C^{*}V$"
+    },
+    {
+        "id": "91",
+        "domanda": "Se interrompiamo la infusione endovenosa di un farmaco con un $T1/2$ di 7h dopo quanto tempo la concentrazione plasmatica risulterà approssimativamente pari al 10% della concentrazione allo stato stazionario?",
+        "risposta": "Circa un giorno"
+    },
+    {
+        "id": "92",
+        "domanda": "Il flusso molare di una sostanza che attraversa una membrana per diffusione semplice è descritto dalla seguente equazione:",
+        "risposta": "Gradiente concentrazione * coefficiente diffusione * area / spessore"
+    },
+    {
+        "id": "93",
+        "domanda": "La biodisponibilità di un farmaco da somministrare per via intramuscolare può essere calcolata con la formula:",
+        "risposta": "AUC IM/AUC EV * 100"
+    },
+    {
+        "id": "94",
+        "domanda": "Quale tra i seguenti fattori può influenzare la diffusione passiva di una sostanza?",
+        "risposta": "Tutti i parametri menzionati"
+    },
+    {
+        "id": "95",
+        "domanda": "Se iniziamo una terapia con un farmaco con un T1/2 di 12h e lo somministriamo due volte al giorno dopo quanto tempo approssimativamente raggiungiamo la concentrazione plasmatica stazionaria?",
+        "risposta": "2 giorni"
+    },
+    {
+        "id": "96",
+        "domanda": "Lo sviluppo di tolleranza ad un farmaco:",
+        "risposta": "Comporta la necessità di aggiustare la dose ma non necessariamente di interrompere il trattamento"
+    },
+    {
+        "id": "97",
+        "domanda": "Il citocromo P450:",
+        "risposta": "Catalizza reazioni di ossidazione"
+    },
+    {
+        "id": "98",
+        "domanda": "Il coefficiente di ripartizione olio/acqua:",
+        "risposta": "$\dot{E}>1$ se il farmaco è lipofilo"
+    },
+    {
+        "id": "99",
+        "domanda": "L'assorbimento di un farmaco è:",
+        "risposta": "Il trasferimento del farmaco dal sito di esposizione al sangue"
+    },
+    {
+        "id": "100",
+        "domanda": "Dove avviene la maggior parte delle trasformazioni di fase due?",
+        "risposta": "Citoplasma"
+    },
+    {
+        "id": "101",
+        "domanda": "Dove avviene la maggior parte delle trasformazioni di fase uno?",
+        "risposta": "Reticolo endoplasmatico"
+    },
+    {
+        "id": "102",
+        "domanda": "La presenza di patologie può influenzare la risposta ai farmaci?",
+        "risposta": "Si"
+    },
+    {
+        "id": "103",
+        "domanda": "La clearance:",
+        "risposta": "indipendente dal volume di distribuzione"
+    },
+    {
+        "id": "104",
+        "domanda": "La somministrazione sublinguale:",
+        "risposta": "è indipendente dall'effetto di primo passaggio"
+    },
+    {
+        "id": "105",
+        "domanda": "Cinetica di fase 1:",
+        "risposta": "Emivita indipendente da concentrazione plasmatica"
+    },
+    {
+        "id": "106",
+        "domanda": "L'allergia ai farmaci è una reazione avversa:",
+        "risposta": "derivata da precedenti sensibilizzazioni al farmaco"
+    },
+    {
+        "id": "107",
+        "domanda": "Farmaco acido con $pKA=5$ qual è il miglior pH di assorbimento?",
+        "risposta": "4"
+    },
+    {
+        "id": "108",
+        "domanda": "Definizione di circolo enteroepatico:",
+        "risposta": "riassorbimento di farmaci dal tenue per farli tornare al fegato"
+    },
+    {
+        "id": "109",
+        "domanda": "Definizione precisa di tolleranza:",
+        "risposta": "riduzione progressiva della risposta ad un farmaco"
+    },
+    {
+        "id": "110",
+        "domanda": "Il favismo è un tipo di:",
+        "risposta": "idiosincrasia"
+    },
+    {
+        "id": "111",
+        "domanda": "Sbagliata su eliminazione farmaci:",
+        "risposta": "un farmaco per essere eliminato meglio va reso più lipofilo"
+    },
+    {
+        "id": "112",
+        "domanda": "La desinenza umab indica un Ab monoclonale di origine:",
+        "risposta": "Umana"
+    },
+    {
+        "id": "113",
+        "domanda": "La desinenza zumab indica un Ab monoclonale di origine:",
+        "risposta": "Umanizzata"
+    },
+    {
+        "id": "114",
+        "domanda": "In quale tra le seguenti aree terapeutiche troviamo il maggior numero di mAb approvati?",
+        "risposta": "Oncologia"
+    },
+    {
+        "id": "115",
+        "domanda": "Quali tra le seguenti rappresentano limitazioni all'utilizzo di Ab di origine murina?",
+        "risposta": "Tutte le caratteristiche menzionate"
+    },
+    {
+        "id": "116",
+        "domanda": "Con che tecnica vengono prodotti gli anticorpi monoclonali?",
+        "risposta": "Immunizzazione e generazione di ibridomi"
+    },
+    {
+        "id": "117",
+        "domanda": "Possiamo prevedere che il farmaco rituximab sia:",
+        "risposta": "Un Ab monoclonale chimerico con indicazione nel campo oncologico"
+    },
+    {
+        "id": "118",
+        "domanda": "Cosa si intende per chemoimmunoconiugato?",
+        "risposta": "Un Ab monoclonale coniugato con un farmaco citotossico"
+    },
+    {
+        "id": "119",
+        "domanda": "La desinenza ximab indica un Ab monoclonale di origine:",
+        "risposta": "Chimerica"
+    },
+    {
+        "id": "120",
+        "domanda": "A che isotipo appartengono gli Ab terapeutici?",
+        "risposta": "IgG"
+    },
+    // ... Continua l'estrazione da "Domande Farmaco OK.pdf"
+    
+    // --- INIZIO FILE: Domande di Farmacologia ordinate.docx ---
+    {
+        "id": "doc2_1",
+        "domanda": "Quali sono i 4 parametri fondamentali della farmacocinetica?",
+        "risposta": "biodisponibilità, volume di distribuzione, clearance ed emivita"
+    },
+    {
+        "id": "doc2_2",
+        "domanda": "quando con somministrazione continua ,di un farmaco abbiamo perdita sia di effetti sia di effetti collaterali",
+        "risposta": "tolleranza"
+    },
+    {
+        "id": "doc2_3",
+        "domanda": "In caso di tolleranza cosa devo fare",
+        "risposta": "non serve cambiare terapia, solo dosaggio"
+    },
+    {
+        "id": "doc2_4",
+        "domanda": "i test di mutagenesi sono",
+        "risposta": "più semplici e più predittivi di quelli di cangerogenesi"
+    },
+    {
+        "id": "doc2_5",
+        "domanda": "I lento acetilatori:",
+        "risposta": "sono individui che metabolizzano lentamente farmaci come l'isoniazide, andando incontro a risposte esagerate e potenzialmente tossiche nel caso li assumano"
+    },
+    {
+        "id": "doc2_6",
+        "domanda": "se tutti gli effetti di un farmaco si attenuano dopo trattamento prolungato:",
+        "risposta": "vuol dire che si è,sviluppata tolleranza farmaco metabolica"
+    },
+    {
+        "id": "doc2_7",
+        "domanda": "Per via di somministrazione transdermica si intende:",
+        "risposta": "applicazione sulla cute per avere effetti,sistemici"
+    },
+    {
+        "id": "doc2_8",
+        "domanda": "l’enzima implicato nel metabolismo di un gran numero di farmaci è",
+        "risposta": "cyp3A4/5"
+    },
+    {
+        "id": "doc2_9",
+        "domanda": "quale parametro viene stimato con il grafico di Schild",
+        "risposta": "indice per la potenza (non efficacia) di,un antagonista competitivo"
+    },
+    {
+        "id": "doc2_10",
+        "domanda": "I 4 principi biologici della farmacocinetica",
+        "risposta": "ADME"
+    },
+    {
+        "id": "doc2_11",
+        "domanda": "assorbimento per os",
+        "risposta": "non necessita di uno specialista per la somministrazione"
+    },
+    {
+        "id": "doc2_12",
+        "domanda": "assorbimento EV",
+        "risposta": "100%biodisponibilità, effetto immediato, non necessita della collaborazione"
+    },
+    {
+        "id": "doc2_13",
+        "domanda": "clearance",
+        "risposta": "eliminazione del farmaco da volume di plasma nell’unità di tempo"
+    },
+    {
+        "id": "doc2_14",
+        "domanda": "tra le reazione di fase I troviamo",
+        "risposta": "S-ossidazione, N-ossidazione, dealogenazione"
+    },
+    {
+        "id": "doc2_15",
+        "domanda": "l’amfetamina penetra nel SNC in quanto",
+        "risposta": "ha un elevato coefficiente di ripartizione olio-acqua"
+    },
+    {
+        "id": "doc2_16",
+        "domanda": "la comparsa di una reazione allergica a un farmaco",
+        "risposta": "non è prevedibile"
+    },
+    {
+        "id": "doc2_17",
+        "domanda": "nel periodo fetale, l’apparato a maggior rischio di effetti teratogeni è",
+        "risposta": "SNC"
+    },
+    {
+        "id": "doc2_18",
+        "domanda": "controindicazione assoluto all’uso di barbiturici sonori è",
+        "risposta": "porfiria"
+    },
+    {
+        "id": "doc2_19",
+        "domanda": "l’estinzione dell’effetto anestetico dopo bolo di barbiturici dipende",
+        "risposta": "dalla redistribuzione del farmaco"
+    },
+    {
+        "id": "doc2_20",
+        "domanda": "il periodo di maggior rischio per gli effetti teratogeni da farmaci",
+        "risposta": "embrionario"
+    },
+    {
+        "id": "doc2_21",
+        "domanda": "La biodisponibilità di un farmaco da somministrare per via sottocutanea può essere calcolata con la formula",
+        "risposta": "(AUC SC /AUC EV) x 100"
+    },
+    {
+        "id": "doc2_22",
+        "domanda": "La biodisponibilità di un farmaco da somministrare per via intramuscolare può essere calcolata con la formula",
+        "risposta": "(AUC Im/AUC EV)e il x 100"
+    },
+    {
+        "id": "doc2_23",
+        "domanda": "Le vie di somministrazione enterali comprendono:",
+        "risposta": "somministrazione orale, rettale e sublinguale"
+    },
+    {
+        "id": "doc2_24",
+        "domanda": "Le subunità alpha delle G proteine:",
+        "risposta": "lega GTP/GDP"
+    },
+    {
+        "id": "doc2_25",
+        "domanda": "Le proteine G sono",
+        "risposta": "Eterotrimeri"
+    },
+    {
+        "id": "doc2_26",
+        "domanda": "Tra i vantaggi della via orale possiamo elencare?",
+        "risposta": "Non richiede l’intervento di personale specializzato"
+    },
+    {
+        "id": "doc2_27",
+        "domanda": "Tra i vantaggi della via endovenosa possiamo elencare:",
+        "risposta": "tutte le precedenti"
+    },
+    {
+        "id": "doc2_28",
+        "domanda": "La tolleranza:",
+        "risposta": "si manifesta con la sindrome d’astinenza"
+    },
+    {
+        "id": "doc2_29",
+        "domanda": "Via di assunzione della cocaina",
+        "risposta": "inalatoria"
+    },
+    {
+        "id": "doc2_30",
+        "domanda": "La tolleranza a un farmaco:",
+        "risposta": "non si sviluppa necessariamente in modo simile per tutti gli effetti del farmaco"
+    },
+    {
+        "id": "doc2_31",
+        "domanda": "Quale farmaco presenta una durata di azione non correlata al tempo di emivita plasmatica:",
+        "risposta": "omeprazolo"
+    },
+    {
+        "id": "doc2_32",
+        "domanda": "Segnare la risposta errata:",
+        "risposta": "il quadro di intossicazione acuta da cocaina comprende il coma"
+    },
+    {
+        "id": "doc2_33",
+        "domanda": "Il quadro dell’intossicazione acuta da cocaina non da",
+        "risposta": "coma"
+    },
+    {
+        "id": "doc2_34",
+        "domanda": "Segnalare la risposta errata: possibili cause di morte per intossicazione acuta da cocaina",
+        "risposta": "arresto respiratorio"
+    },
+    {
+        "id": "doc2_35",
+        "domanda": "Modalità di somministrazione della buprenorfina",
+        "risposta": "sublinguale"
+    },
+    {
+        "id": "doc2_36",
+        "domanda": "Il principale meccanismo di degradazione dei farmaci peptidici è:",
+        "risposta": "proteolisi e conseguente degradazione in aminoacidi"
+    },
+    {
+        "id": "doc2_37",
+        "domanda": "Quale tra questa serie di fenomeni permette di prevedere l’andamento temporale delle concentrazioni plasmatiche dei farmaci:",
+        "risposta": "assorbimento, distribuzione, metabolismo ed eliminazione"
+    },
+    {
+        "id": "doc2_38",
+        "domanda": "Il volume di distribuzione apparente dei farmaci:",
+        "risposta": "è inversamente proporzionale alla concentrazione plasmatica del farmaco all’equilibrio di distribuzione"
+    },
+// --- SECONDA PARTE DELLO SCRIPT (Domande Farmaco OK.pdf: 121-200 / Docx: 39-80) ---
+
+    // --- CONTINUAZIONE FILE: Domande Farmaco OK.pdf ---
+    {
+        "id": "121",
+        "domanda": "Quali tra i seguenti sono vantaggi della produzione di anticorpi in sistemi di display fagico?",
+        "risposta": "Possibilità di ottenere anticorpi umani"
+    },
+    {
+        "id": "122",
+        "domanda": "L'utilizzo di sistemi di display fagico permette:",
+        "risposta": "Di selezionare l'anticorpo desiderato tra milioni di anticorpi diversi"
+    },
+    {
+        "id": "123",
+        "domanda": "I bersagli dei farmaci peptidici sono:",
+        "risposta": "Principalmente recettori accoppiati a proteine G"
+    },
+    {
+        "id": "124",
+        "domanda": "La somministrazione orale di farmaci peptidici:",
+        "risposta": "E' resa difficile dalla instabilità nel tratto gastrointestinale"
+    },
+    {
+        "id": "125",
+        "domanda": "La enfuvirtide è:",
+        "risposta": "Un peptide di sintesi di 36 aminoacidi inibitore della fusione virale"
+    },
+    {
+        "id": "126",
+        "domanda": "La somministrazione parenterale di farmaci peptidici:",
+        "risposta": "Può comportare reazioni nel sito di iniezione"
+    },
+    {
+        "id": "127",
+        "domanda": "I farmaci peptidici sono prodotti:",
+        "risposta": "Tramite sintesi chimica o tecniche di DNA ricombinante"
+    },
+    {
+        "id": "128",
+        "domanda": "La desmopressina è:",
+        "risposta": "Un analogo della vasopressina"
+    },
+    {
+        "id": "129",
+        "domanda": "Il bersaglio dei chinoloni è:",
+        "risposta": "DNA girasi"
+    },
+    {
+        "id": "130",
+        "domanda": "Le beta lattamasi:",
+        "risposta": "Idrolizzano l'anello beta lattamico"
+    },
+    {
+        "id": "131",
+        "domanda": "Quale tra i seguenti antibiotici agisce inibendo la sintesi della parete batterica?",
+        "risposta": "Fosfomicina"
+    },
+    {
+        "id": "132",
+        "domanda": "Il cotrimossazolo è una associazione di:",
+        "risposta": "Trimetoprim e sulfametossazolo"
+    },
+    {
+        "id": "133",
+        "domanda": "Le cefalosporine:",
+        "risposta": "Hanno lo stesso meccanismo d'azione delle penicilline"
+    },
+    {
+        "id": "134",
+        "domanda": "La vancomicina è:",
+        "risposta": "Un glicopeptide"
+    },
+    {
+        "id": "135",
+        "domanda": "I macrolidi:",
+        "risposta": "Inibiscono la sintesi proteica"
+    },
+    {
+        "id": "136",
+        "domanda": "I sulfamidici agiscono:",
+        "risposta": "Inibendo la sintesi dell'acido folico"
+    },
+    {
+        "id": "137",
+        "domanda": "L'acido clavulanico:",
+        "risposta": "E' un inibitore delle beta lattamasi"
+    },
+    {
+        "id": "138",
+        "domanda": "Gli aminoglicosidi:",
+        "risposta": "Sono antibiotici battericidi"
+    },
+    {
+        "id": "139",
+        "domanda": "Le tetracicline:",
+        "risposta": "Sono antibiotici a largo spettro"
+    },
+    {
+        "id": "140",
+        "domanda": "Quale tra i seguenti farmaci è un inibitore della sintesi proteica?",
+        "risposta": "Clindamicina"
+    },
+    {
+        "id": "141",
+        "domanda": "I farmaci bioequivalenti:",
+        "risposta": "Hanno la stessa biodisponibilità"
+    },
+    {
+        "id": "142",
+        "domanda": "Due preparazioni farmaceutiche sono bioequivalenti se:",
+        "risposta": "Hanno la stessa AUC, Cmax e Tmax"
+    },
+    {
+        "id": "143",
+        "domanda": "L'aciclovir:",
+        "risposta": "Viene fosforilato dalla timidina chinasi virale"
+    },
+    {
+        "id": "144",
+        "domanda": "Il meccanismo d'azione degli inibitori della proteasi dell'HIV prevede:",
+        "risposta": "La produzione di particelle virali immature e non infettanti"
+    },
+    {
+        "id": "145",
+        "domanda": "I farmaci anti-retrovirali inibitori della trascrittasi inversa non nucleosidici:",
+        "risposta": "Si legano alla trascrittasi inversa in un sito diverso da quello attivo"
+    },
+    {
+        "id": "146",
+        "domanda": "Il ritonavir:",
+        "risposta": "E' un inibitore della proteasi di HIV"
+    },
+    {
+        "id": "147",
+        "domanda": "L'oseltamivir è attivo contro:",
+        "risposta": "Virus dell'influenza A e B"
+    },
+    {
+        "id": "148",
+        "domanda": "Gli antimetaboliti:",
+        "risposta": "Sono farmaci fase S specifici"
+    },
+    {
+        "id": "149",
+        "domanda": "Il metotrexato:",
+        "risposta": "Inibisce la diidrofolato reduttasi"
+    },
+    {
+        "id": "150",
+        "domanda": "Gli agenti alchilanti:",
+        "risposta": "Formano legami covalenti con il DNA"
+    },
+    {
+        "id": "151",
+        "domanda": "I taxani:",
+        "risposta": "Stabilizzano i microtubuli impedendone la depolimerizzazione"
+    },
+    {
+        "id": "152",
+        "domanda": "Gli alcaloidi della vinca:",
+        "risposta": "Inibiscono la polimerizzazione della tubulina"
+    },
+    {
+        "id": "153",
+        "domanda": "Il tamoxifene è:",
+        "risposta": "Un modulatore selettivo del recettore degli estrogeni"
+    },
+    {
+        "id": "154",
+        "domanda": "L'imatinib:",
+        "risposta": "Inibisce la tirosin chinasi Bcr-Abl"
+    },
+    {
+        "id": "155",
+        "domanda": "I farmaci antifungini polienici:",
+        "risposta": "Si legano all'ergosterolo formando pori nella membrana"
+    },
+    {
+        "id": "156",
+        "domanda": "L'amfotericina B:",
+        "risposta": "Ha uno spettro d'azione ampio"
+    },
+    {
+        "id": "157",
+        "domanda": "Gli azoli antifungini:",
+        "risposta": "Inibiscono la sintesi dell'ergosterolo"
+    },
+    {
+        "id": "158",
+        "domanda": "Il fluconazolo:",
+        "risposta": "Penetra bene nel liquido cefalorachidiano"
+    },
+    {
+        "id": "159",
+        "domanda": "La caspofungina:",
+        "risposta": "Inibisce la sintesi della parete fungina"
+    },
+    {
+        "id": "160",
+        "domanda": "A quale famiglia appartiene l'istamina?",
+        "risposta": "Autacoidi"
+    },
+    {
+        "id": "161",
+        "domanda": "I recettori dell'istamina sono:",
+        "risposta": "Recettori accoppiati a proteine G"
+    },
+    {
+        "id": "162",
+        "domanda": "Quale di questi effetti è mediato dai recettori H1?",
+        "risposta": "Contrazione della muscolatura liscia bronchiale"
+    },
+    {
+        "id": "163",
+        "domanda": "Gli antistaminici H1 di prima generazione:",
+        "risposta": "Passano la barriera ematoencefalica"
+    },
+    {
+        "id": "164",
+        "domanda": "La cetirizina:",
+        "risposta": "E' un antagonista H1 di seconda generazione"
+    },
+    {
+        "id": "165",
+        "domanda": "La stimolazione dei recettori H2 provoca:",
+        "risposta": "Secrezione acida gastrica"
+    },
+    {
+        "id": "166",
+        "domanda": "La ranitidina è:",
+        "risposta": "Un antagonista dei recettori H2"
+    },
+    {
+        "id": "167",
+        "domanda": "Il cromoglicato disodico:",
+        "risposta": "Inibisce la degranulazione dei mastociti"
+    },
+    {
+        "id": "168",
+        "domanda": "Il glutammato è:",
+        "risposta": "Il principale neurotrasmettitore eccitatorio del SNC"
+    },
+    {
+        "id": "169",
+        "domanda": "I recettori NMDA:",
+        "risposta": "Sono bloccati dal magnesio a potenziale di riposo"
+    },
+    {
+        "id": "170",
+        "domanda": "La memantina:",
+        "risposta": "E' un antagonista non competitivo dei recettori NMDA"
+    },
+    {
+        "id": "171",
+        "domanda": "Il GABA è:",
+        "risposta": "Il principale neurotrasmettitore inibitorio del SNC"
+    },
+    {
+        "id": "172",
+        "domanda": "Il recettore GABAA:",
+        "risposta": "E' un recettore canale permeabile al cloro"
+    },
+    {
+        "id": "173",
+        "domanda": "Le benzodiazepine:",
+        "risposta": "Aumentano la frequenza di apertura del canale GABAA"
+    },
+    {
+        "id": "174",
+        "domanda": "Il flumazenil:",
+        "risposta": "E' un antagonista competitivo delle benzodiazepine"
+    },
+    {
+        "id": "175",
+        "domanda": "I recettori GABAB:",
+        "risposta": "Sono accoppiati a proteine Gi"
+    },
+    {
+        "id": "176",
+        "domanda": "Il baclofen è:",
+        "risposta": "Un agonista dei recettori GABAB"
+    },
+    {
+        "id": "177",
+        "domanda": "La serotonina (5-HT) è prodotta a partire da:",
+        "risposta": "Triptofano"
+    },
+    {
+        "id": "178",
+        "domanda": "I recettori 5-HT3 sono:",
+        "risposta": "Recettori canale"
+    },
+    {
+        "id": "179",
+        "domanda": "I triptani sono:",
+        "risposta": "Agonisti 5-HT1B/1D"
+    },
+    {
+        "id": "180",
+        "domanda": "L'ondansetron è:",
+        "risposta": "Un antagonista 5-HT3"
+    },
+    {
+        "id": "181",
+        "domanda": "La fluoxetina:",
+        "risposta": "Inibisce il trasportatore della serotonina (SERT)"
+    },
+    {
+        "id": "182",
+        "domanda": "Il buspirone:",
+        "risposta": "E' un agonista parziale dei recettori 5-HT1A"
+    },
+    {
+        "id": "183",
+        "domanda": "Gli oppioidi endogeni derivano da:",
+        "risposta": "Pro-opiomelanocortina, pro-encefalina, pro-dinorfina"
+    },
+    {
+        "id": "184",
+        "domanda": "I recettori degli oppioidi sono:",
+        "risposta": "Mu, delta, kappa"
+    },
+    {
+        "id": "185",
+        "domanda": "La morfina:",
+        "risposta": "E' un agonista puro dei recettori mu"
+    },
+    {
+        "id": "186",
+        "domanda": "Il naloxone:",
+        "risposta": "E' un antagonista dei recettori oppioidi"
+    },
+    {
+        "id": "187",
+        "domanda": "La buprenorfina:",
+        "risposta": "E' un agonista parziale dei recettori mu"
+    },
+    {
+        "id": "188",
+        "domanda": "Il metadone:",
+        "risposta": "Ha una lunga emivita"
+    },
+    {
+        "id": "189",
+        "domanda": "La tolleranza agli oppioidi:",
+        "risposta": "Si sviluppa per l'effetto analgesico e la depressione respiratoria"
+    },
+    {
+        "id": "190",
+        "domanda": "Quale effetto degli oppioidi non va incontro a tolleranza?",
+        "risposta": "Miosi e stipsi"
+    },
+    {
+        "id": "191",
+        "domanda": "I FANS agiscono:",
+        "risposta": "Inibendo le cicloossigenasi"
+    },
+    {
+        "id": "192",
+        "domanda": "L'aspirina:",
+        "risposta": "Inibisce irreversibilmente la COX-1"
+    },
+    {
+        "id": "193",
+        "domanda": "I coxib:",
+        "risposta": "Sono inibitori selettivi della COX-2"
+    },
+    {
+        "id": "194",
+        "domanda": "L'effetto collaterale più comune dei FANS è:",
+        "risposta": "Danno alla mucosa gastrica"
+    },
+    {
+        "id": "195",
+        "domanda": "Il paracetamolo:",
+        "risposta": "Ha attività antipiretica e analgesica ma scarsa attività antinfiammatoria"
+    },
+    {
+        "id": "196",
+        "domanda": "La noradrenalina viene rimossa dallo spazio sinaptico principalmente tramite:",
+        "risposta": "Reuptake (NET)"
+    },
+    {
+        "id": "197",
+        "domanda": "La cocaina agisce:",
+        "risposta": "Bloccando il reuptake delle catecolamine"
+    },
+    {
+        "id": "198",
+        "domanda": "L'anfetamina:",
+        "risposta": "Promuove il rilascio di catecolamine"
+    },
+    {
+        "id": "199",
+        "domanda": "I recettori muscarinici sono:",
+        "risposta": "Recettori accoppiati a proteine G"
+    },
+    {
+        "id": "200",
+        "domanda": "L'atropina è:",
+        "risposta": "Un antagonista muscarinico non selettivo"
+    },
+
+    // --- CONTINUAZIONE FILE: Domande di Farmacologia ordinate.docx ---
+    {
+        "id": "doc2_39",
+        "domanda": "Segnare la risposta errata: la via rettale",
+        "risposta": "serve per la somministrazione di farmaci nel caso di vomito, quando il pz è incosciente o per i bambini piccoli"
+    },
+    {
+        "id": "doc2_40",
+        "domanda": "il pH urinario può variare",
+        "risposta": "tra 4,5 e 8"
+    },
+    {
+        "id": "doc2_41",
+        "domanda": "La clearance totale di un farmaco:",
+        "risposta": "è costante se la cinetica di eliminazione è di primo ordine"
+    },
+    {
+        "id": "doc2_42",
+        "domanda": "Il T1/2 può essere calcolato con la seguente equazione",
+        "risposta": "t ½ = 0.693 x Vd / CL"
+    },
+    {
+        "id": "doc2_43",
+        "domanda": "la dose di carico può essere calcolata",
+        "risposta": "concentrazione plasmatica desiderata x volume di distribuzione"
+    },
+    {
+        "id": "doc2_44",
+        "domanda": "La biodisponibilità di un farmaco",
+        "risposta": "frazione della dose somministrata che raggiunge il circolo sistemico"
+    },
+    {
+        "id": "doc2_45",
+        "domanda": "Tra le reazioni di fase II possiamo elencare:",
+        "risposta": "Acetilazione, metilazione, coniugazione con glutatione"
+    },
+    {
+        "id": "doc2_46",
+        "domanda": "Quale delle seguenti non è una reazione di fase 1",
+        "risposta": "coniugazione con glutatione"
+    },
+    {
+        "id": "doc2_47",
+        "domanda": "Tra le reazioni di fase II possiamo elencare:",
+        "risposta": "Glicuronazione, solfatazione, coniugazione con aminoacidi"
+    },
+    {
+        "id": "doc2_48",
+        "domanda": "La dose di mantenimento di un farmaco può essere calcolata con la seguente equazione:",
+        "risposta": "Concentrazione plasmatica x Clerance"
+    },
+    {
+        "id": "doc2_49",
+        "domanda": "La biotrasformazione di un farmaco avviene principalmente ad opera di:",
+        "risposta": "Enzimi microsomiali epatici"
+    },
+    {
+        "id": "doc2_50",
+        "domanda": "Se somministriamo un farmaco per infusione endovenosa costante raggiungiamo lo stato stazionario (steady state):",
+        "risposta": "Dopo un tempo pari a circa 4-5 volte il tempo di emivita"
+    },
+    {
+        "id": "doc2_51",
+        "domanda": "Il legame di un farmaco alle proteine plasmatiche:",
+        "risposta": "Limita la filtrazione glomerulare"
+    },
+    {
+        "id": "doc2_52",
+        "domanda": "La diffusione passiva di un farmaco attraverso le membrane biologiche:",
+        "risposta": "Dipende dal coefficiente di ripartizione olio/acqua"
+    },
+    {
+        "id": "doc2_53",
+        "domanda": "Un farmaco acido debole (pKa 3.5):",
+        "risposta": "Sarà maggiormente assorbito nello stomaco (pH 1-2)"
+    },
+    {
+        "id": "doc2_54",
+        "domanda": "Un farmaco base debole (pKa 8.5):",
+        "risposta": "Sarà maggiormente ionizzato nello stomaco"
+    },
+    {
+        "id": "doc2_55",
+        "domanda": "L'effetto di primo passaggio epatico:",
+        "risposta": "Riduce la biodisponibilità orale"
+    },
+    {
+        "id": "doc2_56",
+        "domanda": "Il recettore GABA A:",
+        "risposta": "Lega le benzodiazepine in un sito allosterico"
+    },
+    {
+        "id": "doc2_57",
+        "domanda": "Il recettore nicotinico muscolare:",
+        "risposta": "E' un canale cationico attivato dall'acetilcolina"
+    },
+    {
+        "id": "doc2_58",
+        "domanda": "La succinilcolina è:",
+        "risposta": "Un bloccante neuromuscolare depolarizzante"
+    },
+    {
+        "id": "doc2_59",
+        "domanda": "Il curaro (d-tubocurarina):",
+        "risposta": "E' un antagonista competitivo del recettore nicotinico"
+    },
+    {
+        "id": "doc2_60",
+        "domanda": "La tossina botulinica:",
+        "risposta": "Blocca il rilascio di acetilcolina"
+    },
+    {
+        "id": "doc2_61",
+        "domanda": "Gli inibitori dell'acetilcolinesterasi:",
+        "risposta": "Aumentano la concentrazione di acetilcolina nel vallo sinaptico"
+    },
+    {
+        "id": "doc2_62",
+        "domanda": "La neostigmina:",
+        "risposta": "E' un inibitore reversibile dell'acetilcolinesterasi"
+    },
+    {
+        "id": "doc2_63",
+        "domanda": "I gas nervini (es. Sarin):",
+        "risposta": "Sono inibitori irreversibili dell'acetilcolinesterasi"
+    },
+    {
+        "id": "doc2_64",
+        "domanda": "L'adrenalina è indicata:",
+        "risposta": "Nello shock anafilattico"
+    },
+    {
+        "id": "doc2_65",
+        "domanda": "La noradrenalina ha maggiore affinità per:",
+        "risposta": "I recettori alfa adrenergici rispetto ai beta 2"
+    },
+    {
+        "id": "doc2_66",
+        "domanda": "Il salbutamolo è:",
+        "risposta": "Un agonista selettivo beta 2"
+    },
+    {
+        "id": "doc2_67",
+        "domanda": "Il propanololo è:",
+        "risposta": "Un beta bloccante non selettivo"
+    },
+    {
+        "id": "doc2_68",
+        "domanda": "L'atenololo è:",
+        "risposta": "Un beta 1 bloccante selettivo"
+    },
+    {
+        "id": "doc2_69",
+        "domanda": "La prazosina è:",
+        "risposta": "Un antagonista alfa 1 selettivo"
+    },
+    {
+        "id": "doc2_70",
+        "domanda": "La clonidina agisce come:",
+        "risposta": "Agonista alfa 2 centrale"
+    },
+    {
+        "id": "doc2_71",
+        "domanda": "Gli effetti collaterali comuni dei beta bloccanti includono:",
+        "risposta": "Bradicardia e broncocostrizione"
+    },
+    {
+        "id": "doc2_72",
+        "domanda": "La dopamina a basse dosi stimola:",
+        "risposta": "I recettori dopaminergici D1 renali"
+    },
+    {
+        "id": "doc2_73",
+        "domanda": "La levodopa è usata nel Parkinson perché:",
+        "risposta": "Passa la barriera ematoencefalica e viene convertita in dopamina"
+    },
+    {
+        "id": "doc2_74",
+        "domanda": "La carbidopa:",
+        "risposta": "Inibisce la dopa-decarbossilasi periferica"
+    },
+    {
+        "id": "doc2_75",
+        "domanda": "I neurolettici (antipsicotici) agiscono principalmente:",
+        "risposta": "Bloccando i recettori D2"
+    },
+    {
+        "id": "doc2_76",
+        "domanda": "Un effetto indesiderato tipico degli antipsicotici tipici è:",
+        "risposta": "Sintomi extrapiramidali"
+    },
+    {
+        "id": "doc2_77",
+        "domanda": "La clozapina:",
+        "risposta": "E' un antipsicotico atipico con rischio di agranulocitosi"
+    },
+    {
+        "id": "doc2_78",
+        "domanda": "Gli antidepressivi triciclici (TCA):",
+        "risposta": "Inibiscono il reuptake di noradrenalina e serotonina"
+    },
+    {
+        "id": "doc2_79",
+        "domanda": "Gli inibitori delle MAO (IMAO):",
+        "risposta": "Aumentano la disponibilità di catecolamine e serotonina"
+    },
+    {
+        "id": "doc2_80",
+        "domanda": "Il litio è utilizzato per:",
+        "risposta": "Il trattamento del disturbo bipolare"
+    },
+    
 ];
+
 
 let attemptQuestions = [];
 let currentIndex = 0;
@@ -578,4 +1585,5 @@ function endAttempt(reason) {
 </script>
 </body>
 </html>
+
 
