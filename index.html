@@ -1,339 +1,174 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Simulatore Esame Farmacologia</title>
-    <style>
-        :root { --primary: #007aff; --success: #34c759; --error: #ff3b30; --bg: #f2f2f7; }
-        body { font-family: -apple-system, system-ui; background-color: var(--bg); display: flex; justify-content: center; padding: 20px; margin: 0; }
-        #app { width: 100%; max-width: 500px; background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); position: relative; }
-        
-        /* Schermate */
-        .screen { display: none; }
-        .active { display: block; }
+<meta charset="UTF-8">
+<title>Voice Navigation App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f4f4;
+    }
 
-        /* Timer e UI */
-        #timer { font-weight: bold; color: var(--error); font-size: 1.2rem; text-align: center; margin-bottom: 10px; }
-        .question { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: #1c1c1e; }
-        .options-container { display: flex; flex-direction: column; gap: 10px; }
-        .option { padding: 15px; border: 2px solid #e5e5ea; border-radius: 12px; cursor: pointer; text-align: left; background: white; font-size: 1rem; transition: all 0.2s; }
-        .option:hover:not(:disabled) { background-color: #f9f9f9; border-color: #d1d1d6; }
-        .correct { background-color: var(--success) !important; color: white; border-color: var(--success); }
-        .wrong { background-color: var(--error) !important; color: white; border-color: var(--error); }
-        
-        /* Revisione */
-        .review-item { text-align: left; margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #eee; }
-        .review-q { font-weight: bold; margin-bottom: 5px; }
-        .review-a { color: var(--success); font-weight: 600; }
-        .review-user { color: var(--error); }
+    header {
+        background: #333;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
 
-        button.main-btn { width: 100%; padding: 15px; border: none; border-radius: 12px; background: var(--primary); color: white; font-size: 1.1rem; font-weight: 600; cursor: pointer; margin-top: 20px; }
-        button.main-btn:hover { opacity: 0.9; }
-    </style>
+    .container {
+        padding: 20px;
+    }
+
+    .menu, .submenu, .content {
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+
+    .button {
+        display: block;
+        background: #007BFF;
+        color: white;
+        padding: 12px;
+        margin: 10px 0;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .button:hover {
+        background: #0056b3;
+    }
+
+    .back {
+        background: #6c757d;
+    }
+
+    img {
+        max-width: 100%;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+</style>
 </head>
 <body>
 
-<div id="app">
-    <div id="start-screen" class="screen active">
-        <h1>Simulatore TEST</h1>
-        <p>Il tentativo include domande con risposte a scelta multipla specifiche. Hai 60 minuti di tempo.</p>
-        <button class="main-btn" onclick="startAttempt()">Inizia Tentativo</button>
-    </div>
+<header>
+    <h1>Voice Navigation App</h1>
+</header>
 
-    <div id="quiz-screen" class="screen">
-        <div id="timer">Tempo: 30:00</div>
-        <div id="score-board" style="text-align:right; font-size:0.8rem; color: #888;">Domanda <span id="q-idx">1</span></div>
-        <div id="question" class="question"></div>
-        <div id="options" class="options-container"></div>
-        <button id="next-btn" class="main-btn" style="display:none;" onclick="renderQuestion()">Prossima Domanda</button>
-    </div>
+<div class="container">
 
-    <div id="result-screen" class="screen">
-        <h2>Tentativo Completato</h2>
-        <p id="final-score" style="font-size: 1.2rem; font-weight: bold;"></p>
-        <div id="review-section">
-            <h3>Riepilogo Errori:</h3>
-            <div id="error-list"></div>
-        </div>
-        <button class="main-btn" onclick="location.reload()">Nuovo Tentativo</button>
-    </div>
+    <!-- MAIN MENU -->
+    <div id="mainMenu" class="menu active"></div>
+
+    <!-- SUB MENU -->
+    <div id="subMenu" class="submenu"></div>
+
+    <!-- CONTENT PAGE -->
+    <div id="contentPage" class="content"></div>
+
 </div>
 
 <script>
-// --- CONFIGURAZIONE DATI ---
-// Inserisci qui le tue domande. 
-// 'q': Testo della domanda
-// 'options': Array di 4 possibili risposte
-// 'correct': Deve essere IDENTICA a una delle stringhe in 'options'
+// -------- DATA STRUCTURE --------
+const data = {
+    "Voice 1": [
+        { title: "Item 1", text: "Content for Item 1", img: "https://via.placeholder.com/400" },
+        { title: "Item 2", text: "Content for Item 2", img: "https://via.placeholder.com/400" }
+    ],
+    "Voice 2": [
+        { title: "Item A", text: "Content A", img: "https://via.placeholder.com/400" }
+    ],
+    "Voice 3": [],
+    "Voice 4": [],
+    "Voice 5": [],
+    "Voice 6": [],
+    "Voice 7": [],
+    "Voice 8": [],
+    "Voice 9": [],
+    "Voice 10": [],
+    "Voice 11": []
+};
 
-const allQuestions = [
-    // --- PATOLOGIA GENERALE: Danno Cellulare e Adattamento ---
-    {
-        q: "legge casati",
-        options: [
-            "1904",
-            "1859",
-            "1888",
-            "1877"
-        ],
-        correct: "1859"
-    },
-    {
-        q: "legge coppino ",
-        options: [
-            "1859",
-            "1888",
-            "1923",
-            "1877"
-        ],
-        correct: "1877"
-    },
-   {
-        q: "unità d’Italia",
-        options: [
-            "1861",
-            "1877",
-            "1859",
-            "1904"
-        ],
-        correct: "1861"
-    },
-    {
-        q: "programmi gabelli",
-        options: [
-            "1888 (12 anni obbligo scolastico)",
-            "1877 (12 anni obbligo scolastico)",
-            "1888 (positivismo didattico)",
-            "1877 (positivismo didattico)"
-        ],
-        correct: "1888 (positivismo didattico)"
-    },
-    {
-        q: "legge orlando ",
-        options: [
-            "1904 (12 anni obbligo scolastico)",
-            "1877 (scuole affidate allo stato)",
-            "1888 (12 anni obbligo scolastico)",
-            "1911 (positivismo didattico)"
-        ],
-        correct: "1904 (12 anni obbligo scolastico)"
-    },
-    {
-        q: "legge dando-credaro",
-        options: [
-            "1923 (12 anni obbligo scolastico)",
-            "1911 (scuole affidate allo stato)",
-            "1948 (positivismo didattico)",
-            "1904 (scuole affidate allo stato)"
-        ],
-        correct: "1911 (scuole affidate allo stato)"
-    },
-   {
-        q: "riforma gentile",
-        options: [
-            "1911",
-            "1904",
-            "1923",
-            "1948"
-        ],
-        correct: "1923"
-    },
-    {
-        q: "costituzione",
-        options: [
-            "1904",
-            "1948",
-            "1911",
-            "1923"
-        ],
-        correct: "1948"
-    },
-      {
-        q: "scuola media unica",
-        options: [
-            "1948",
-            "1968",
-            "1974",
-            "1962"
-        ],
-        correct: "1962"
-    },
-    {
-        q: "materne statali",
-        options: [
-            "1968",
-            "1962",
-            "1974",
-            "1977"
-        ],
-        correct: "1968"
-    },
-    {
-        q: "decreti delegati (incontri collegiali) ",
-        options: [
-            "1983",
-            "1974",
-            "1979",
-            "1977"
-        ],
-        correct: "1974"
-    },
-   {
-        q: "legge 517/1977 (insegnante di sostegno e BES)",
-        options: [
-            "1977",
-            "1972",
-            "1981",
-            "1968"
-        ],
-        correct: "1977"
-    },
-    {
-        q: "indicazioni nazionali",
-        options: [
-            "2011",
-            "2010",
-            "2002",
-            "2012"
-        ],
-        correct: "2012"
-    }
+// -------- ELEMENTS --------
+const mainMenu = document.getElementById("mainMenu");
+const subMenu = document.getElementById("subMenu");
+const contentPage = document.getElementById("contentPage");
 
-];
+// -------- BUILD MAIN MENU --------
+function loadMainMenu() {
+    mainMenu.innerHTML = "<h2>Main Menu</h2>";
 
-// --- LOGICA DEL QUIZ ---
-
-let attemptQuestions = [];
-let currentIndex = 0;
-let score = 0;
-let errors = [];
-let timerInterval;
-let timeLeft = 30 * 60; // 30 minuti in secondi
-
-function startAttempt() {
-    // Mescola l'ordine delle domande
-    attemptQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
-    
-    currentIndex = 0;
-    score = 0;
-    errors = [];
-    timeLeft = 30 * 60; // Reset tempo a 30 min
-
-    document.getElementById('start-screen').classList.remove('active');
-    document.getElementById('quiz-screen').classList.add('active');
-    
-    startTimer();
-    renderQuestion();
-}
-
-function startTimer() {
-    // Pulisce eventuali timer precedenti per sicurezza
-    clearInterval(timerInterval);
-    
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        let mins = Math.floor(timeLeft / 60);
-        let secs = timeLeft % 60;
-        document.getElementById('timer').innerText = `Tempo: ${mins}:${secs < 10 ? '0' : ''}${secs}`;
-        
-        if (timeLeft <= 0) {
-            endAttempt("Tempo scaduto!");
-        }
-    }, 1000);
-}
-
-function renderQuestion() {
-    if (currentIndex >= attemptQuestions.length) {
-        endAttempt("Quiz completato!");
-        return;
-    }
-
-    document.getElementById('next-btn').style.display = "none";
-    document.getElementById('q-idx').innerText = (currentIndex + 1) + "/" + attemptQuestions.length;
-    
-    const qObj = attemptQuestions[currentIndex];
-    document.getElementById('question').innerText = qObj.q;
-    
-    const optionsDiv = document.getElementById('options');
-    optionsDiv.innerHTML = "";
-
-    // Copia le opzioni e le mescola per non averle sempre nello stesso ordine
-    let currentOptions = [...qObj.options].sort(() => Math.random() - 0.5);
-
-    currentOptions.forEach(choice => {
-        const btn = document.createElement('button');
-        btn.className = 'option';
-        btn.innerText = choice;
-        btn.onclick = () => checkAnswer(btn, choice, qObj);
-        optionsDiv.appendChild(btn);
+    Object.keys(data).forEach(voice => {
+        const btn = document.createElement("div");
+        btn.className = "button";
+        btn.innerText = voice;
+        btn.onclick = () => openSubMenu(voice);
+        mainMenu.appendChild(btn);
     });
 }
 
-function checkAnswer(btn, choice, qObj) {
-    const allBtns = document.querySelectorAll('.option');
-    // Disabilita tutti i pulsanti dopo la scelta
-    allBtns.forEach(b => b.disabled = true);
+// -------- OPEN SUB MENU --------
+function openSubMenu(voice) {
+    mainMenu.classList.remove("active");
+    subMenu.classList.add("active");
 
-    if (choice === qObj.correct) {
-        btn.classList.add('correct');
-        score++;
-    } else {
-        btn.classList.add('wrong');
-        errors.push({
-            q: qObj.q, 
-            correct: qObj.correct, 
-            your: choice
-        });
-        
-        // Evidenzia automaticamente la risposta corretta se l'utente ha sbagliato
-        allBtns.forEach(b => { 
-            if(b.innerText === qObj.correct) b.classList.add('correct'); 
-        });
+    subMenu.innerHTML = `<h2>${voice}</h2>`;
+
+    if (data[voice].length === 0) {
+        subMenu.innerHTML += "<p>No items yet.</p>";
     }
-    
-    currentIndex++;
-    document.getElementById('next-btn').style.display = "block";
+
+    data[voice].forEach(item => {
+        const btn = document.createElement("div");
+        btn.className = "button";
+        btn.innerText = item.title;
+        btn.onclick = () => openContent(item);
+        subMenu.appendChild(btn);
+    });
+
+    const back = document.createElement("div");
+    back.className = "button back";
+    back.innerText = "Back";
+    back.onclick = () => {
+        subMenu.classList.remove("active");
+        mainMenu.classList.add("active");
+    };
+
+    subMenu.appendChild(back);
 }
 
-function endAttempt(reason) {
-    clearInterval(timerInterval);
-    
-    // Se il tempo scade, segna le domande mancanti come "Non risposte"
-    if (currentIndex < attemptQuestions.length) {
-        for (let i = currentIndex; i < attemptQuestions.length; i++) {
-            errors.push({
-                q: attemptQuestions[i].q, 
-                correct: attemptQuestions[i].correct, 
-                your: "Non risposta (tempo scaduto)"
-            });
-        }
-    }
+// -------- OPEN CONTENT PAGE --------
+function openContent(item) {
+    subMenu.classList.remove("active");
+    contentPage.classList.add("active");
 
-    document.getElementById('quiz-screen').classList.remove('active');
-    document.getElementById('result-screen').classList.add('active');
-    
-    // Calcolo percentuale
-    let percentage = Math.round((score / attemptQuestions.length) * 100);
-    document.getElementById('final-score').innerText = `${reason} Punteggio: ${score}/${attemptQuestions.length} (${percentage}%)`;
-    
-    const errorList = document.getElementById('error-list');
-    errorList.innerHTML = "";
-    
-    if(errors.length === 0) {
-        errorList.innerHTML = "<p style='color:var(--success); text-align:center;'>Nessun errore! Eccellente!</p>";
-    } else {
-        errors.forEach(err => {
-            errorList.innerHTML += `
-                <div class="review-item">
-                    <div class="review-q">${err.q}</div>
-                    <div class="review-user">Tua risposta: ${err.your}</div>
-                    <div class="review-a">Risposta corretta: ${err.correct}</div>
-                </div>`;
-        });
-    }
+    contentPage.innerHTML = `
+        <h2>${item.title}</h2>
+        <p>${item.text}</p>
+        <img src="${item.img}" alt="">
+    `;
+
+    const back = document.createElement("div");
+    back.className = "button back";
+    back.innerText = "Back";
+    back.onclick = () => {
+        contentPage.classList.remove("active");
+        subMenu.classList.add("active");
+    };
+
+    contentPage.appendChild(back);
 }
+
+// -------- INIT --------
+loadMainMenu();
 </script>
+
 </body>
 </html>
 
