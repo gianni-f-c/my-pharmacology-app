@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Voice Navigation App</title>
+<title>Pirate Logbook</title>
+
 <style>
     body {
-        font-family: Arial, sans-serif;
         margin: 0;
-        background: #f4f4f4;
+        font-family: "Trebuchet MS", sans-serif;
+        background: linear-gradient(to bottom, #0c1b2a, #1f3b4d);
+        color: #f5e6c8;
     }
 
     header {
-        background: #333;
-        color: white;
-        padding: 15px;
         text-align: center;
+        padding: 20px;
+        font-size: 28px;
+        letter-spacing: 2px;
+        color: #f8d27a;
     }
 
     .container {
         padding: 20px;
+        max-width: 600px;
+        margin: auto;
     }
 
     .menu, .submenu, .content {
@@ -29,80 +34,108 @@
         display: block;
     }
 
+    /* Rounded "map buttons" */
     .button {
-        display: block;
-        background: #007BFF;
-        color: white;
-        padding: 12px;
-        margin: 10px 0;
+        background: rgba(255, 223, 150, 0.08);
+        border: 1px solid rgba(255, 223, 150, 0.2);
+        padding: 14px;
+        margin: 12px 0;
+        border-radius: 40px;
         text-align: center;
         cursor: pointer;
-        border-radius: 5px;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(4px);
     }
 
     .button:hover {
-        background: #0056b3;
+        background: rgba(255, 223, 150, 0.2);
+        transform: scale(1.03);
     }
 
     .back {
-        background: #6c757d;
+        background: rgba(255,255,255,0.05);
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: normal;
+        margin-bottom: 20px;
+        color: #ffd98e;
+    }
+
+    p {
+        line-height: 1.6;
+        text-align: center;
     }
 
     img {
-        max-width: 100%;
-        margin-top: 10px;
-        border-radius: 5px;
+        width: 100%;
+        border-radius: 20px;
+        margin-top: 15px;
+        opacity: 0.95;
+    }
+
+    /* subtle wave divider */
+    .wave {
+        height: 20px;
+        margin: 20px 0;
+        background: radial-gradient(circle at 50% -10px, #f8d27a 20%, transparent 21%);
+        background-size: 40px 20px;
+        opacity: 0.3;
     }
 </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Voice Navigation App</h1>
-</header>
+<header>☠ Pirate Logbook ☠</header>
 
 <div class="container">
 
-    <!-- MAIN MENU -->
     <div id="mainMenu" class="menu active"></div>
-
-    <!-- SUB MENU -->
     <div id="subMenu" class="submenu"></div>
-
-    <!-- CONTENT PAGE -->
     <div id="contentPage" class="content"></div>
 
 </div>
 
 <script>
-// -------- DATA STRUCTURE --------
 const data = {
-    "Voice 1": [
-        { title: "Item 1", text: "Content for Item 1", img: "https://via.placeholder.com/400" },
-        { title: "Item 2", text: "Content for Item 2", img: "https://via.placeholder.com/400" }
+    "East Blue": [
+        {
+            title: "Foosha Village",
+            text: "Where the journey begins...",
+            img: "https://via.placeholder.com/500x300"
+        },
+        {
+            title: "Shells Town",
+            text: "A marine-controlled island.",
+            img: "https://via.placeholder.com/500x300"
+        }
     ],
-    "Voice 2": [
-        { title: "Item A", text: "Content A", img: "https://via.placeholder.com/400" }
+    "Grand Line": [
+        {
+            title: "Alabasta",
+            text: "A desert kingdom in turmoil.",
+            img: "https://via.placeholder.com/500x300"
+        }
     ],
-    "Voice 3": [],
-    "Voice 4": [],
-    "Voice 5": [],
-    "Voice 6": [],
-    "Voice 7": [],
-    "Voice 8": [],
-    "Voice 9": [],
-    "Voice 10": [],
-    "Voice 11": []
+    "New World": [],
+    "Crew": [],
+    "Ships": [],
+    "Treasures": [],
+    "Enemies": [],
+    "Allies": [],
+    "Islands": [],
+    "Battles": [],
+    "Mysteries": []
 };
 
-// -------- ELEMENTS --------
 const mainMenu = document.getElementById("mainMenu");
 const subMenu = document.getElementById("subMenu");
 const contentPage = document.getElementById("contentPage");
 
-// -------- BUILD MAIN MENU --------
 function loadMainMenu() {
-    mainMenu.innerHTML = "<h2>Main Menu</h2>";
+    mainMenu.innerHTML = "<h2>Choose Your Route</h2><div class='wave'></div>";
 
     Object.keys(data).forEach(voice => {
         const btn = document.createElement("div");
@@ -113,15 +146,14 @@ function loadMainMenu() {
     });
 }
 
-// -------- OPEN SUB MENU --------
 function openSubMenu(voice) {
     mainMenu.classList.remove("active");
     subMenu.classList.add("active");
 
-    subMenu.innerHTML = `<h2>${voice}</h2>`;
+    subMenu.innerHTML = `<h2>${voice}</h2><div class='wave'></div>`;
 
     if (data[voice].length === 0) {
-        subMenu.innerHTML += "<p>No items yet.</p>";
+        subMenu.innerHTML += "<p>Nothing charted here yet...</p>";
     }
 
     data[voice].forEach(item => {
@@ -132,54 +164,36 @@ function openSubMenu(voice) {
         subMenu.appendChild(btn);
     });
 
-    const back = document.createElement("div");
-    back.className = "button back";
-    back.innerText = "Back";
-    back.onclick = () => {
-        subMenu.classList.remove("active");
-        mainMenu.classList.add("active");
-    };
-
-    subMenu.appendChild(back);
+    addBackButton(subMenu, mainMenu);
 }
 
-// -------- OPEN CONTENT PAGE --------
 function openContent(item) {
     subMenu.classList.remove("active");
     contentPage.classList.add("active");
 
     contentPage.innerHTML = `
         <h2>${item.title}</h2>
+        <div class='wave'></div>
         <p>${item.text}</p>
-        <img src="${item.img}" alt="">
+        <img src="${item.img}">
     `;
 
-    const back = document.createElement("div");
-    back.className = "button back";
-    back.innerText = "Back";
-    back.onclick = () => {
-        contentPage.classList.remove("active");
-        subMenu.classList.add("active");
-    };
-
-    contentPage.appendChild(back);
+    addBackButton(contentPage, subMenu);
 }
 
-// -------- INIT --------
+function addBackButton(current, target) {
+    const back = document.createElement("div");
+    back.className = "button back";
+    back.innerText = "← Back";
+    back.onclick = () => {
+        current.classList.remove("active");
+        target.classList.add("active");
+    };
+    current.appendChild(back);
+}
+
 loadMainMenu();
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
